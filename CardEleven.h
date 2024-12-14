@@ -1,7 +1,15 @@
 #pragma once
 #include "Card.h"
-class CardEleven : public Card
+#include "Cell.h"
+
+class CardTen : public Card
 {
+	int CardPrice;
+	int FeestoPay;
 
+public:
+
+	void ReadCardParameters(Grid* pGrid);
+
+	void Apply(Grid* pGrid, Player* pPlayer);
 };
-
