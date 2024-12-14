@@ -28,7 +28,23 @@ AddCardAction::~AddCardAction()
 
 void AddCardAction::ReadActionParameters() 
 {	
+	Grid* pGrid = pManager->GetGrid();
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
 
+	cardNumber = pIn->GetInteger(pOut);
+	if (!(cardNumber >= 1 && cardNumber <= 13)) {
+		pGrid->PrintErrorMessage("please, input a valid card number...");
+		return;
+	}
+
+	cardPosition = pIn->GetCellClicked();
+	if (!(cardPosition.IsValidCell())) {
+		pGrid->PrintErrorMessage("please, click on a valid cell...");
+		return;
+	}
+
+	pOut->ClearStatusBar();
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
