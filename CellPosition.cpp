@@ -131,3 +131,10 @@ void CellPosition::AddCellNum (int addedNum)
 	// Note: this function updates the data members (vCell and hCell) of the calling object
 
 }
+
+bool CellPosition::operator == (const CellPosition position)
+{
+	if ((VCell() == position.VCell()) && (HCell() == position.HCell()))
+		return true;
+	else return false;
+}

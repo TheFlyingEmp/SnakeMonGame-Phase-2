@@ -41,4 +41,6 @@ enum ActionType // The actions supported (add more as needed)
 	STATUS 				// Inside StatusBar Area
 };
 
+enum SetofOwnedCards { Does_Not_Own, Card_10, Card_11, Card_12, Card_13 };
+
 #endif

@@ -22,6 +22,11 @@ Cell* Player::GetCell() const
 	return pCell;
 }
 
+int Player::GetPlayerNum() const
+{
+	return playerNum;
+}
+
 void Player::SetWallet(int wallet)
 {
 	this->wallet = wallet;
@@ -36,6 +41,18 @@ int Player::GetWallet() const
 int Player::GetTurnCount() const
 {
 	return turnCount;
+}
+
+SetofOwnedCards Player::GetCardsOwned(int i) const
+{
+	if (i >= 0 && i <= 3)
+		return CardsOwned[i];
+}
+
+void Player::SetCardOwned(int i, SetofOwnedCards Card)
+{
+	if (i >= 0 && i <= 3)
+		CardsOwned[i] = Card;
 }
 
 // ====== Drawing Functions ======
