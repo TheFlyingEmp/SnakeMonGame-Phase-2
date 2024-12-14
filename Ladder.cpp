@@ -15,6 +15,11 @@ void Ladder::Draw(Output* pOut) const
 void Ladder::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	
+	Output* pOut = pGrid->GetOutput();
+
+	pOut->PrintMessage("You have reached a ladder. Click to continue ...");
+
+	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
