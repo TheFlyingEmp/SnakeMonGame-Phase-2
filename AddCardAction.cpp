@@ -18,6 +18,7 @@
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
+	pManager = pApp;
 	// Initializes the pManager pointer of Action with the passed pointer
 }
 
