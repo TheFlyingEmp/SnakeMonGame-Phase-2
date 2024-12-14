@@ -8,6 +8,7 @@ class CardEleven : public Card
 	int FeestoPay;
 
 public:
+	CardEleven(const CellPosition& pos);
 
 	void ReadCardParameters(Grid* pGrid);
 

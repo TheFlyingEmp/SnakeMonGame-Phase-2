@@ -1,5 +1,9 @@
 #include "CardEleven.h"
 
+CardEleven::CardEleven(const CellPosition& pos) : Card(pos) {
+	cardNumber = 11;
+}
+
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
 	Input* pIn = pGrid->GetInput();
