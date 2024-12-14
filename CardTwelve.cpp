@@ -30,7 +30,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	Cell* CardCell = pPlayer->GetCell();
 
 	Card::Apply(pGrid, pPlayer);
-
+  
 	if (isbought == false) {
 		do {
 			if (EF > 0)
@@ -70,9 +70,11 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		} while (i < 4);
 
 		if (PlayerHasCard != true) {
+      
 			pGrid->PrintErrorMessage("the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
+      
 		}
 	}
 }
