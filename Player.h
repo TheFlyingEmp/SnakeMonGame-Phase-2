@@ -16,7 +16,9 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
-	
+
+	SetofOwnedCards CardsOwned[4];
+
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -26,10 +28,15 @@ public:
 	void SetCell(Cell * cell);		// A setter for the pCell
 	Cell* GetCell() const;			// A getter for the pCell
 
+	int GetPlayerNum() const;
+
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
 
 	int GetTurnCount() const;		// A getter for the turnCount
+
+	SetofOwnedCards GetCardsOwned(int i) const;
+	void SetCardOwned(int i, SetofOwnedCards Card);
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
