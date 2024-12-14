@@ -55,6 +55,21 @@ void Player::SetCardOwned(int i, SetofOwnedCards Card)
 		CardsOwned[i] = Card;
 }
 
+int Player::GetjustRolledDiceNum() const
+{
+	return justRolledDiceNum;
+}
+
+int Player::GetExtraDiceRolls() const
+{
+	return ExtraDiceRolls;
+}
+
+void Player::SetExtraDiceRolls(int e)
+{
+	ExtraDiceRolls = e;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

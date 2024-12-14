@@ -16,6 +16,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+	int ExtraDiceRolls;
 
 	SetofOwnedCards CardsOwned[4];
 
@@ -37,6 +38,10 @@ public:
 
 	SetofOwnedCards GetCardsOwned(int i) const;
 	void SetCardOwned(int i, SetofOwnedCards Card);
+	int GetjustRolledDiceNum() const;// A getter for the RolledDice
+	int GetExtraDiceRolls() const;	 // A Getter For the number of extra dice rolls
+	void SetExtraDiceRolls(int e);	 // A setter for the number of extra dice rolls (postive means extra rolls, 
+	// but negative means that for the next number of rolls will = to zero)
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
