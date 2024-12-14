@@ -9,7 +9,7 @@ class CardEleven : public Card
 
 public:
 	CardEleven(const CellPosition& pos);
-
+  
 	void ReadCardParameters(Grid* pGrid);
 
 	void Apply(Grid* pGrid, Player* pPlayer);
