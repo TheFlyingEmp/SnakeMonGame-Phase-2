@@ -9,3 +9,8 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 
 	CelltoBeMovedTo = pIn->GetInteger(pOut);
 }
+
+void CardNine::Apply(Grid* pGrid, Player* pPlayer) 
+{
+	pPlayer->Move(pGrid, CelltoBeMovedTo);
+}
