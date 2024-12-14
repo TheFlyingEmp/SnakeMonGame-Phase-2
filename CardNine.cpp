@@ -16,5 +16,9 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 
 void CardNine::Apply(Grid* pGrid, Player* pPlayer) 
 {
+	Card::Apply(pGrid, pPlayer);
+
+	pGrid->PrintErrorMessage("The player: " + to_string(pPlayer->GetPlayerNum()) + " will be moved to cell " + to_string(CelltoBeMovedTo));
+
 	pPlayer->Move(pGrid, CelltoBeMovedTo);
 }
