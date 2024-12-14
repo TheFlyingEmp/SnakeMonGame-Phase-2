@@ -61,5 +61,6 @@ public:
 	                                // this will make cellNum = 56 which updates the data members: vCell = 3 and hCell = 0 
 	                                // (assuming NumVerticalCells = 9 and NumHorizontalCells = 11 )
 
+	bool operator == (const CellPosition position);
 };
 

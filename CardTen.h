@@ -1,5 +1,7 @@
 #pragma once
 #include "Card.h"
+#include "Cell.h"
+
 class CardTen : public Card
 {
 	int CardPrice;
