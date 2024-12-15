@@ -1,5 +1,9 @@
 #include "CardTwelve.h"
 
+CardTwelve::CardTwelve(const CellPosition& pos) : Card(pos) {
+	cardNumber = 12;
+}
+
 void CardTwelve::ReadCardParameters(Grid* pGrid)
 {
 	Input* pIn = pGrid->GetInput();
@@ -25,6 +29,8 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	Output* pOut = pGrid->GetOutput();
 	Cell* CardCell = pPlayer->GetCell();
 
+	Card::Apply(pGrid, pPlayer);
+  
 	if (isbought == false) {
 		do {
 			if (EF > 0)
@@ -64,9 +70,11 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		} while (i < 4);
 
 		if (PlayerHasCard != true) {
-			pGrid->PrintErrorMessage("You have reached card 10, the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+      
+			pGrid->PrintErrorMessage("the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
+      
 		}
 	}
 }

@@ -38,8 +38,10 @@ public:
 
 	SetofOwnedCards GetCardsOwned(int i) const;
 	void SetCardOwned(int i, SetofOwnedCards Card);
+  
 	int GetjustRolledDiceNum() const;// A getter for the RolledDice
 	void SetjustRolledDiceNum(int d); // A Setter for the RolledDice
+  
 	int GetExtraDiceRolls() const; // A Getter For the number of extra dice rolls
 	void SetExtraDiceRolls(int e);	 // A setter for the number of extra dice rolls (postive means extra rolls, 
 	// but negative means that for the next number of rolls will = to zero)
