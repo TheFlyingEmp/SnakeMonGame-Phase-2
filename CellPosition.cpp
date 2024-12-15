@@ -89,7 +89,7 @@ int CellPosition::GetCellNumFromPosition(const CellPosition & cellPosition)
 	///TODO:(done) Implement this function as described in the .h file
 
 	if (cellPosition.IsValidCell())
-		return 89 + cellPosition.HCell() - cellPosition.VCell() * NumHorizontalCells;
+		return (NumHorizontalCells * NumVerticalCells - NumHorizontalCells + 1) + cellPosition.HCell() - cellPosition.VCell() * NumHorizontalCells;
 	else return -1;
 
 	// this line should be changed with your implementation
