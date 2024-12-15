@@ -1,5 +1,8 @@
 #include "CardTwelve.h"
 
+bool CardTwelve::IsBought = false;
+bool CardTwelve::PlayerHasCard = false;
+
 CardTwelve::CardTwelve(const CellPosition& pos) : Card(pos) {
 	cardNumber = 12;
 }
@@ -22,16 +25,14 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
-	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
-	Cell* CardCell = pPlayer->GetCell();
+	Cell* CellPlayerisOn = pPlayer->GetCell();
 
 	Card::Apply(pGrid, pPlayer);
   
-	if (isbought == false) {
+	if (IsBought == false) {
 		do {
 			if (EF > 0)
 				pGrid->PrintErrorMessage("Please an appropriate value...");
@@ -45,7 +46,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 
 		if (answer == 'y') {
 			pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
-			isbought = true;
+			IsBought = true;
 			i = 0;
 			do {
 				if (pPlayer->GetCardsOwned(i) == NULL) {
@@ -58,7 +59,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		else return;
 	}
 
-	if (CardCell->GetCellPosition() == position) {
+	if (CellPlayerisOn->GetCellPosition() == position) {
 
 		i = 0;
 		do {
@@ -71,10 +72,9 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 
 		if (PlayerHasCard != true) {
       
-			pGrid->PrintErrorMessage("the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
-      
 		}
 	}
 }
