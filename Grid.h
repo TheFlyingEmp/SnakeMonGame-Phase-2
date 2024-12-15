@@ -61,6 +61,8 @@ public:
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 
+	Cell * GetCellFromPosition(const CellPosition& pos); // A getter for the cell with position pos
+
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
@@ -79,6 +81,11 @@ public:
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
 
+	// ============== Save and Load Grid ===================
+	
+	void SaveGrid(ofstream& OutFile, string fileName);
+
+	void LoadGrid(ifstream& InFile, string filename);
 	~Grid(); // A destructor for any needed deallcations
 };
 
