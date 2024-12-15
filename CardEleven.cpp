@@ -1,5 +1,12 @@
 #include "CardEleven.h"
 
+bool CardEleven::IsBought = false;
+bool CardEleven::PlayerHasCard = false;
+
+CardEleven::CardEleven(const CellPosition& pos) : Card(pos) {
+	cardNumber = 11;
+}
+
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
 	Input* pIn = pGrid->GetInput();
@@ -18,14 +25,14 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
-	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
-	Cell* CardCell = pPlayer->GetCell();
+	Cell* CellPlayerisOn = pPlayer->GetCell();
 
-	if (isbought == false) {
+	Card::Apply(pGrid, pPlayer);
+  
+	if (IsBought == false) {
 		do {
 			if (EF > 0)
 				pGrid->PrintErrorMessage("Please an appropriate value...");
@@ -39,7 +46,7 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 
 		if (answer == 'y') {
 			pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
-			isbought = true;
+			IsBought = true;
 			i = 0;
 			do {
 				if (pPlayer->GetCardsOwned(i) == NULL) {
@@ -52,7 +59,7 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 		else return;
 	}
 
-	if (CardCell->GetCellPosition() == position) {
+	if (CellPlayerisOn->GetCellPosition() == position) {
 
 		i = 0;
 		do {
@@ -64,7 +71,8 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 		} while (i < 4);
 
 		if (PlayerHasCard != true) {
-			pGrid->PrintErrorMessage("You have reached card 11, the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+      
+			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
 		}

@@ -1,5 +1,12 @@
 #include "CardTen.h"
 
+bool CardTen::IsBought = false;
+bool CardTen::PlayerHasCard = false;
+
+CardTen::CardTen(const CellPosition& pos) : Card(pos) {
+	cardNumber = 10;
+}
+
 void CardTen::ReadCardParameters(Grid* pGrid)
 {
 	Input* pIn = pGrid->GetInput();
@@ -18,17 +25,17 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
-	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
-	Cell* CardCell = pPlayer->GetCell();
+	Cell* CellPlayerisOn = pPlayer->GetCell();
 
-	if (isbought == false) {
+	Card::Apply(pGrid, pPlayer);
+
+	if (IsBought == false) {
 		do {
 			if (EF > 0)
-				pGrid->PrintErrorMessage("Please an appropriate value...");
+				pGrid->PrintErrorMessage("Please input an appropriate value...");
 
 			pGrid->PrintErrorMessage("Do you want to buy this card and all other cards of corresponding number? (y/n) Card Price: " + to_string(CardPrice) + " Fees that other players will pay: " + to_string(FeestoPay));
 			string TempStringHolder = pIn->GetString(pOut);
@@ -39,7 +46,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 
 		if (answer == 'y') {
 			pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
-			isbought = true;
+			IsBought = true;
 			i = 0;
 			do {
 				if (pPlayer->GetCardsOwned(i) == NULL) {
@@ -52,7 +59,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 		else return;
 	}
 
-	if (CardCell->GetCellPosition() == position) {
+	if (CellPlayerisOn->GetCellPosition() == position) {
 
 		i = 0;
 		do {
@@ -64,7 +71,8 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 		} while (i < 4);
 
 		if (PlayerHasCard != true) {
-			pGrid->PrintErrorMessage("You have reached card 10, the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+      
+			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
 		}

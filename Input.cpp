@@ -44,11 +44,18 @@ string Input::GetString(Output* pO) const
 
 int Input::GetInteger(Output *pO) const 
 {
+	int ConvertedInt;
+	int x = 0, y = 0;
 
 	///TODO:(done) implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
-
-	int ConvertedInt = stoi(GetString(pO));
+	try {
+		ConvertedInt = stoi(GetString(pO));
+	}
+	catch (const exception& e) {
+		pO->PrintMessage("Error of type: " + string(e.what()) + " was detected, please input a valid integer");
+		GetPointClicked(x,y);
+	}
 
 	if (ConvertedInt >= 0)
 		return ConvertedInt;
@@ -152,8 +159,8 @@ CellPosition Input::GetCellClicked() const
 		{
 			///TODO:(done) SetHCell and SetVCell of the object cellPost appropriately
 			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
-			cellPos.SetHCell(x / (UI.width / NumHorizontalCells));
-			cellPos.SetVCell((y - UI.ToolBarHeight) / ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+			cellPos.SetHCell(x / UI.CellWidth);
+			cellPos.SetVCell((y - UI.ToolBarHeight) / UI.CellHeight);
 		}
 		else {
 			cellPos.SetHCell(-1); 

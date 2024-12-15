@@ -130,7 +130,7 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 	int w=0, h=0;
 
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 	pWind->GetIntegerSize(w, h, cardNum);
 
@@ -312,7 +312,7 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 
 	///TODO:(done) Draw the Cell Rectangle using the appropriate coordinates
 	
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);
