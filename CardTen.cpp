@@ -22,9 +22,9 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 
 void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 {
-	bool PlayerHasCard;
 	char answer;
 	int EF = 0, i = 0;
+	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
