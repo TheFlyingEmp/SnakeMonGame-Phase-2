@@ -271,6 +271,7 @@ void Output::PrintPlayersInfo(string info)
 
 	ClearToolBar();
 
+	Output::CreatePlayModeToolBar();
 
 
 	// Set the pen and font before drawing the string on the window

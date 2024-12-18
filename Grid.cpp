@@ -8,6 +8,7 @@
 #include "ToPlayMode.h"
 #include "Player.h"
 
+
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
 	// Allocate the Cell Objects of the CellList
@@ -216,6 +217,7 @@ void Grid::UpdateInterface() const
 		playersInfo += " | Curr = " + to_string(currPlayerNumber);
 
 		pOut->PrintPlayersInfo(playersInfo);
+		
 
 		// Note: UpdatePlayerCell() function --> already update drawing players in Play Mode
 		//       so we do NOT need draw all players again in UpdateInterface() of the Play mode
@@ -235,6 +237,10 @@ void Grid::UpdateInterface() const
 			{
 				CellList[i][j]->DrawLadderOrSnake(pOut);
 			}
+		}
+		for (int i = 0; i < MaxPlayerCount; i++)
+		{
+			PlayerList[i]->Draw(pOut);
 		}
 	}
 }
