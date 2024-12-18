@@ -1,6 +1,6 @@
 #include "CardSix.h"
 
-CardSix::CardSix(const CellPosition& pos)
+CardSix::CardSix(const CellPosition& pos) : Card(pos)
 {
 }
 
