@@ -55,6 +55,7 @@ int Input::GetInteger(Output *pO) const
 	catch (const exception& e) {
 		pO->PrintMessage("Error of type: " + string(e.what()) + " was detected, please input a valid integer");
 		GetPointClicked(x,y);
+		return;
 	}
 
 	if (ConvertedInt >= 0)

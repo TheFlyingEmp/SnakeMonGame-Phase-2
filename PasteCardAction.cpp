@@ -12,6 +12,8 @@ void PasteCardAction::Execute()
 	CardtoBePasted = pGrid->GetClipboard();
 
 	pGrid->AddObjectToCell(CardtoBePasted);
+
+	pGrid->UpdateInterface();
 }
 
 PasteCardAction::~PasteCardAction()
