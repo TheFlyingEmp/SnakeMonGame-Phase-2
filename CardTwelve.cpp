@@ -1,7 +1,6 @@
 #include "CardTwelve.h"
 
 bool CardTwelve::IsBought = false;
-bool CardTwelve::PlayerHasCard = false;
 
 CardTwelve::CardTwelve(const CellPosition& pos) : Card(pos) {
 	cardNumber = 12;
@@ -23,6 +22,7 @@ void CardTwelve::ReadCardParameters(Grid* pGrid)
 
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
+	bool PlayerHasCard;
 	char answer;
 	int EF = 0, i = 0;
 

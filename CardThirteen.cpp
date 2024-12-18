@@ -1,7 +1,7 @@
 #include "CardThirteen.h"
 
 bool CardThirteen::IsBought = false;
-bool CardThirteen::PlayerHasCard = false;
+bool PlayerHasCard;
 
 CardThirteen::CardThirteen(const CellPosition& pos) : Card(pos) {
 	cardNumber = 13;
@@ -23,6 +23,7 @@ void CardThirteen::ReadCardParameters(Grid* pGrid)
 
 void CardThirteen::Apply(Grid* pGrid, Player* pPlayer)
 {
+	bool PlayerHasCard;
 	char answer;
 	int EF = 0, i = 0;
 

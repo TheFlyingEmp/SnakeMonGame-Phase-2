@@ -7,7 +7,6 @@ class CardTen : public Card
 	int CardPrice;
 	int FeestoPay;
 	static bool IsBought;
-	static bool PlayerHasCard;
 
 public:
 	CardTen(const CellPosition& pos);
