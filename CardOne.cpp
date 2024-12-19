@@ -12,7 +12,21 @@ CardOne::~CardOne(void)
 void CardOne::ReadCardParameters(Grid * pGrid)
 {
 	
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+
+	pOut->PrintMessage("New CardOne: Enter its wallet amount ...");
+
+	 walletAmount = pIn->GetInteger(pOut);
+
+	 while (!(walletAmount > 0) )
+	 {
+		 pGrid->PrintErrorMessage("Inavlid Wallet Amount.please try again.....");
+		 walletAmount = pIn->GetInteger(pOut);
+	 }
+
 	
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
@@ -31,12 +45,13 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	// to be able to perform his Apply() action
 
 	// 3- Clear the status bar
-
+	pOut->ClearStatusBar();
 }
 
 void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 {
-		
+	Card::Apply( pGrid, pPlayer);
+	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	
 
