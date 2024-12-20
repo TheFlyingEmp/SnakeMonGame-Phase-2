@@ -16,7 +16,7 @@ class Cell
 {
 	const CellPosition position;	// the cell position (vCell and hCell) --> will not change after the Cell is constructed
 
-	GameObject * pGameObject;       // a pointer to the GameObject existing in the Cell (if any)
+	GameObject* pGameObject;       // a pointer to the GameObject existing in the Cell (if any)
 	                                // if no GameObject in this Cell, pGameObject should be NULL
 
 public:
@@ -30,11 +30,11 @@ public:
 	
 	bool SetGameObject(GameObject * pGObj);	// A setter for pGameObject of the cell
 	                                        // It does NOT add the object and returns false if the cell already contains one
-	GameObject * GetGameObject() const;     // A getter for pGameObject of the cell
+	GameObject* GetGameObject() const;     // A getter for pGameObject of the cell
 		
-	Ladder * HasLadder() const;	// Checks if pGameObject is a Ladder Then returns it if a ladder or returns NULL if not ladder
-	Snake * HasSnake() const;	// Checks if pGameObject is a Snake Then returns it if a snake or returns NULL if not snake
-	Card * HasCard() const;	    // Checks if pGameObject is a Card Then returns it if a card or returns NULL if not card
+	Ladder* HasLadder() const;	// Checks if pGameObject is a Ladder Then returns it if a ladder or returns NULL if not ladder
+	Snake* HasSnake() const;	// Checks if pGameObject is a Snake Then returns it if a snake or returns NULL if not snake
+	Card* HasCard() const;	    // Checks if pGameObject is a Card Then returns it if a card or returns NULL if not card
 	
 	// ======= Drawing Functions ======= 
 

@@ -34,13 +34,13 @@ void AddCardAction::ReadActionParameters()
 
 	cardNumber = pIn->GetInteger(pOut);
 	if (!(cardNumber >= 1 && cardNumber <= 13)) {
-		pGrid->PrintErrorMessage("please, input a valid card number...");
+		pGrid->PrintErrorMessage("Invalid, please input a valid card number...");
 		return;
 	}
 
 	cardPosition = pIn->GetCellClicked();
 	if (!(cardPosition.IsValidCell())) {
-		pGrid->PrintErrorMessage("please, click on a valid cell...");
+		pGrid->PrintErrorMessage("Invalid, please click on a valid cell...");
 		return;
 	}
 
@@ -129,7 +129,7 @@ void AddCardAction::Execute()
 		bool isadded = pGrid->AddObjectToCell(pCard);
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
 		if (isadded == false)
-			pGrid->PrintErrorMessage("The current object could not be added to the desired cell(s)...");
+			pGrid->PrintErrorMessage("The card could not be added to the desired cell...");
 	}
 
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction

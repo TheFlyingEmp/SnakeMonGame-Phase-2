@@ -4,14 +4,12 @@
 
 class CutCardAction : public Action
 {
-	Card* CardtoBeCut;
-
 public:
 	CutCardAction(ApplicationManager* pApp);
 
-	virtual void ReadActionParameters(Card* Card);
+	virtual void ReadActionParameters();
 
-	virtual void Execute(Card* Card);
+	virtual void Execute();
 
 	virtual ~CutCardAction();
 };

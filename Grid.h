@@ -17,10 +17,10 @@ class Player;
 
 class Grid
 {
-	Output * pOut;   // A pointer to the Output object
-	Input * pIn;     // A pointer to the Input object
+	Output* pOut;   // A pointer to the Output object
+	Input* pIn;     // A pointer to the Input object
 
-	Cell * CellList[NumVerticalCells][NumHorizontalCells];  // An array of "Pointers" to All Cells of the Grid Cells
+	Cell* CellList[NumVerticalCells][NumHorizontalCells];  // An array of "Pointers" to All Cells of the Grid Cells
 															// We make it array of pointers not objects because
 															// there are NO default constructor for class Cell
 
@@ -66,8 +66,8 @@ public:
 
 	// ========= Other Getters =========
 	
-	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
-	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
+	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
+	Ladder* GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	Snake* GetNextSnake(const CellPosition& position);
 
 	// ========= User Interface Functions =========
