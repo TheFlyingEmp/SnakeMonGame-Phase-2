@@ -22,8 +22,6 @@ void PasteCardAction::Execute()
 		pGrid->PrintErrorMessage("Invalid, the clicked cell does not exist");
 		return;
 	}
-
-	pGrid->AddObjectToCell(pGrid->GetClipboard());
 }
 
 PasteCardAction::~PasteCardAction()
