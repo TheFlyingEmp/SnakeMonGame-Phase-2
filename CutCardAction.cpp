@@ -15,7 +15,7 @@ void CutCardAction::Execute()
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 
-	pGrid->PrintErrorMessage("Please, click on the source cell");
+	pOut->PrintMessage("Please, click on the source cell");
 	CellPosition TargetCellPos = pIn->GetCellClicked();
 	if (TargetCellPos.IsValidCell()) {
 		if (pGrid->HasCardObject(TargetCellPos))

@@ -9,11 +9,11 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 
-	pGrid->PrintErrorMessage("Please, input the Card's Price...");
+	pOut->PrintMessage("Please, input the Card's Price...");
 
 	CardPrice = pIn->GetInteger(pOut);
 
-	pGrid->PrintErrorMessage("Please, input the Fees to Pay when passing the Card...");
+	pOut->PrintMessage("Please, input the Fees to Pay when passing the Card...");
 
 	FeestoPay = pIn->GetInteger(pOut);
 }
@@ -33,9 +33,9 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 	if (isbought == false) {
 		do {
 			if (EF > 0)
-				pGrid->PrintErrorMessage("Please an appropriate value...");
+				pGrid->PrintErrorMessage("Please, input an appropriate value...");
 
-			pGrid->PrintErrorMessage("Do you want to buy this card and all other cards of corresponding number? (y/n) Card Price: " + to_string(CardPrice) + " Fees that other players will pay: " + to_string(FeestoPay));
+			pOut->PrintMessage("Do you want to buy this card and all other cards of corresponding number? (y/n) Card Price: " + to_string(CardPrice) + " Fees that other players will pay: " + to_string(FeestoPay));
 			string TempStringHolder = pIn->GetString(pOut);
 			answer = TempStringHolder[0];
 			answer = tolower(answer);

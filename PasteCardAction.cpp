@@ -11,7 +11,7 @@ void PasteCardAction::Execute()
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 
-	pGrid->PrintErrorMessage("Please, click on the destination cell");
+	pOut->PrintMessage("Please, click on the destination cell");
 	CellPosition TargetCellPos = pIn->GetCellClicked();
 	if (TargetCellPos.IsValidCell()) {
 		Card* CardtoBePasted = pGrid->GetClipboard();
