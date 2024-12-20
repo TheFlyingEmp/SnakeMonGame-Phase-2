@@ -5,22 +5,35 @@ CutCardAction::CutCardAction(ApplicationManager* pApp) : Action(pApp)
 	pManager = pApp;
 }
 
-void CutCardAction::ReadActionParameters(Card* Card)
+void CutCardAction::ReadActionParameters()
 {
-	CardtoBeCut = Card;
 }
 
-void CutCardAction::Execute(Card* Card)
+void CutCardAction::Execute()
 {
-	ReadActionParameters(Card);
-
 	Grid* pGrid = pManager->GetGrid();
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
 
-	CellPosition PreviousPosition = CardtoBeCut->GetPosition();
+	pGrid->PrintErrorMessage("Please, click on the source cell");
+	CellPosition TargetCellPos = pIn->GetCellClicked();
+	if (TargetCellPos.IsValidCell()) {
+		Cell TargetCell(TargetCellPos);
 
-	pGrid->SetClipboard(CardtoBeCut);
-
-	pGrid->RemoveObjectFromCell(PreviousPosition);
+		if (TargetCell.HasCard())
+		{
+			pGrid->SetClipboard(TargetCell.HasCard());
+			pGrid->RemoveObjectFromCell(TargetCellPos);
+		}
+		else {
+			pGrid->PrintErrorMessage("Invalid, the clicked cell does not have a card in it");
+			return;
+		}
+	}
+	else {
+		pGrid->PrintErrorMessage("Invalid, the clicked cell does not exist");
+		return;
+	}
 }
 
 CutCardAction::~CutCardAction()

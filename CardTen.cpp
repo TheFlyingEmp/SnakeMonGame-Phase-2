@@ -28,7 +28,10 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
+<<<<<<< HEAD
 	Cell* CellPlayerisOn = pPlayer->GetCell();
+=======
+>>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 
 	Card::Apply(pGrid, pPlayer);
 
@@ -59,6 +62,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 		else return;
 	}
 
+<<<<<<< HEAD
 	if (CellPlayerisOn->GetCellPosition() == position) {
 
 		i = 0;
@@ -75,7 +79,23 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
+=======
+	i = 0;
+	do {
+		if (pPlayer->GetCardsOwned(i) == Card_10) {
+			PlayerHasCard = true;
+			break;
+>>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 		}
+		i++;
+	} while (i < 4);
+
+	if (PlayerHasCard != true) {
+      
+		pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+		pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
+		pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
+      
 	}
 }
 

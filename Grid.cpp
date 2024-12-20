@@ -3,8 +3,13 @@
 #include "Cell.h"
 #include "GameObject.h"
 #include "Ladder.h"
-#include "Card.h"
 #include "Snake.h"
+#include "Card.h"
+<<<<<<< HEAD
+#include "Snake.h"
+=======
+#include "ToPlayMode.h"
+>>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 #include "Player.h"
 #include <fstream>
 
@@ -152,7 +157,9 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
-
+			if (CellList[i][j]->HasLadder())
+				return CellList[i][j]->HasLadder();
+		
 
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			
@@ -162,6 +169,27 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	}
 	return NULL; // not found
 }
+Snake* Grid::GetNextSnake(const CellPosition& position)
+{
+
+	int startH = position.HCell(); // represents the start hCell in the current row to search for the ladder in
+	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
+	{
+		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
+		{
+
+			if (CellList[i][j]->HasSnake())
+				return CellList[i][j]->HasSnake();
+			///TODO: Check if CellList[i][j] has a Snake, if yes return it
+
+
+		}
+		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
+	}
+	return NULL; // not found
+}
+
+
 
 /*Snake* Grid::GetNextSnake(const CellPosition& position)
 {
@@ -217,6 +245,22 @@ void Grid::UpdateInterface() const
 		// Note: UpdatePlayerCell() function --> already update drawing players in Play Mode
 		//       so we do NOT need draw all players again in UpdateInterface() of the Play mode
 		// In addition, cards/snakes/ladders do NOT change positions in Play Mode, so need to draw them here too
+			// 1- Draw cells with or without cards 
+		for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) // left to right
+			{
+				CellList[i][j]->DrawCellOrCard(pOut);
+			}
+		}
+
+		for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) // left to right
+			{
+				CellList[i][j]->DrawLadderOrSnake(pOut);
+			}
+		}
 	}
 }
 

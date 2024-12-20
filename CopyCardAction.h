@@ -1,17 +1,15 @@
 #pragma once
 #include "Action.h"
-#include "Card.h"
+#include "Grid.h"
 
 class CopyCardAction : public Action
 {
-	Card* CardtoBeCopied;
-
 public:
 	CopyCardAction(ApplicationManager* pApp);
 
-	virtual void ReadActionParameters(Card* Card);
+	virtual void ReadActionParameters();
 
-	virtual void Execute(Card* Card);
+	virtual void Execute();
 
 	virtual ~CopyCardAction();
 };
