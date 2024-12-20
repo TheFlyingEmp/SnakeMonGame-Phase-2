@@ -59,6 +59,25 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	return false; // if not a valid position
 }
 
+bool Grid::HasGameObject(const CellPosition &cellpositon)
+{
+	if (cellpositon.IsValidCell())
+	{
+		GameObject* pPrevObject = CellList[cellpositon.VCell()][cellpositon.HCell()]->GetGameObject();
+		if (pPrevObject)
+			return true;
+		else
+			return false;
+		
+	}
+	return false;
+}
+
+GameObject* Grid::GetGameObjectfromCell(const CellPosition& cellpositon)
+{
+	return CellList[cellpositon.VCell()][cellpositon.HCell()]->GetGameObject();
+}
+
 void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
@@ -120,6 +139,11 @@ bool Grid::GetEndGame() const
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
+}
+
+void Grid::SetCurrentPlayer(int current_player)
+{
+	this->currPlayerNumber = current_player;
 }
 
 // ========= Other Getters =========

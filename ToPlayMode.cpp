@@ -1,7 +1,7 @@
 #include "ToPlayMode.h"
 
 #include "Grid.h"
-#include "Player.h"
+
 
 ToPlayMode::ToPlayMode(ApplicationManager* pApp) : Action(pApp)
 {
@@ -21,4 +21,6 @@ void ToPlayMode::Execute()
 	Output* pOut = pGrid->GetOutput();
 	pOut->CreatePlayModeToolBar();
 	pGrid->UpdateInterface();
+
+
 }
