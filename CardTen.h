@@ -1,6 +1,7 @@
 #pragma once
 #include "Card.h"
 #include "Cell.h"
+#include <fstream>
 
 class CardTen : public Card
 {
@@ -15,5 +16,9 @@ public:
 	void ReadCardParameters(Grid* pGrid);
 
 	void Apply(Grid* pGrid, Player* pPlayer);
+
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& InFile);
 };
 

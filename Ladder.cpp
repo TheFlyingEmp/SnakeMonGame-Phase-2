@@ -38,9 +38,14 @@ CellPosition Ladder::GetEndPosition() const
 	return endCellPos;
 }
 
-void Ladder::Save(ofstream& OutFile, const CellPosition cell) const
+void Ladder::Save(ofstream& OutFile)
 {
-	//OutFile << position.GetCellNum() << "\t" << endCellPos.GetCellNum() << endl; // prints the start and end positions in the file
+	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl; // prints the start and end positions in the file
+}
+
+void Ladder::Load(ifstream& InFile)
+{
+	return;
 }
 
 Ladder::~Ladder()

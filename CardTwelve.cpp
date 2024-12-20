@@ -78,3 +78,13 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		}
 	}
 }
+
+void CardTwelve::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CardPrice << " " << FeestoPay << endl;
+}
+
+void CardTwelve::Load(ifstream& InFile)
+{
+	InFile >> CardPrice >> FeestoPay;
+}

@@ -18,3 +18,12 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 	PlayerNewCellNum.AddCellNum(DiceValue); // Get the cell position of the next cell
 	pGrid->UpdatePlayerCell(pPlayer, PlayerNewCellNum); // Move the player to the next cell
 }
+
+void CardFive::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << endl;
+}
+
+void CardFive::Load(ifstream& InFile)
+{
+}

@@ -78,3 +78,14 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 		}
 	}
 }
+
+void CardTen::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CardPrice << " " << FeestoPay << endl;
+}
+
+void CardTen::Load(ifstream& InFile)
+{
+	InFile >> CardPrice >> FeestoPay;
+}
+

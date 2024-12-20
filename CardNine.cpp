@@ -22,3 +22,12 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
 	pPlayer->Move(pGrid, CelltoBeMovedTo);
 }
+
+void CardNine::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CelltoBeMovedTo << endl;
+}
+
+void CardNine::Load(ifstream& InFile)
+{
+}

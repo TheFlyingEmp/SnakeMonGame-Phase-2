@@ -6,7 +6,10 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
-
+	this->ExtraDiceRolls = 0;
+	this->onFire = 0;
+	this->poisoned = 0;
+	this->specialAttaksLeft = 2;
 
 	// Make all the needed initialization or validations
 }
@@ -76,6 +79,36 @@ void Player::SetExtraDiceRolls(int e)
 	ExtraDiceRolls = e;
 }
 
+int Player::GetPoisoned() const
+{
+	return poisoned;
+}
+
+void Player::SetPosisond(int p)
+{
+	poisoned = p;
+}
+
+int Player::GetOnFire() const
+{
+	return onFire;
+}
+
+void Player::SetOnFire(int f)
+{
+	onFire = f;
+}
+
+int Player::GetSpecialAttaksLeft() const
+{
+	return specialAttaksLeft;
+}
+
+void Player::SetSpecialAttacksLeft(int s)
+{
+	specialAttaksLeft = s;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -103,6 +136,8 @@ void Player::ClearDrawing(Output* pOut) const
 void Player::Move(Grid * pGrid, int diceNumber)
 {
 
+
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
@@ -111,7 +146,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	
-	turnCount = (++turnCount) % 3;
+	turnCount = (turnCount + 1) % 3;
 
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
@@ -126,6 +161,11 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	if (wallet == 0)
 	{
 		return;
+	}
+
+	if (ExtraDiceRolls < 0)
+	{
+		ExtraDiceRolls++;
 	}
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 

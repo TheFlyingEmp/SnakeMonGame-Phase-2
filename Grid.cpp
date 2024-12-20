@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Ladder.h"
 #include "Card.h"
+#include "Snake.h"
 #include "Player.h"
 #include <fstream>
 
@@ -162,6 +163,11 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
+/*Snake* Grid::GetNextSnake(const CellPosition& position)
+{
+	return nullptr;
+}*/
+
 
 // ========= User Interface Functions =========
 
@@ -257,7 +263,7 @@ void Grid::SaveGrid(ofstream& OutFile, string fileName)
 		{
 			if (CellList[i][j]->HasLadder())
 			{
-				CellList[i][j]->HasLadder()->Save(OutFile, CellList[i][j]->GetCellPosition());
+				CellList[i][j]->HasLadder()->Save(OutFile);
 			}
 		}
 	}
@@ -270,7 +276,7 @@ void Grid::SaveGrid(ofstream& OutFile, string fileName)
 		{
 			if (CellList[i][j]->HasSnake())
 			{
-				CellList[i][j]->HasSnake()->Save(OutFile, CellList[i][j]->GetCellPosition());
+				CellList[i][j]->HasSnake()->Save(OutFile);
 			}
 		}
 	}*/ //wating for the snake class
@@ -283,7 +289,7 @@ void Grid::SaveGrid(ofstream& OutFile, string fileName)
 		{
 			if (CellList[i][j]->HasCard())
 			{
-				CellList[i][j]->HasCard()->Save(OutFile, CellList[i][j]->GetCellPosition());
+				CellList[i][j]->HasCard()->Save(OutFile);//, CellList[i][j]->GetCellPosition());
 			}
 		}
 	}*/
@@ -385,6 +391,7 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 		case 10:
 			cardPtr = new CardTen(CardPos);
 			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			cardPtr->Load()
 			break;
 		
 		case 11:

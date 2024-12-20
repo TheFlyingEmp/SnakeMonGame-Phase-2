@@ -13,3 +13,12 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 	ApplicationManager CardAppManage = ApplicationManager();
 	CardAppManage.ExecuteAction(ROLL_DICE);
 }
+
+void CardSeven::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << endl;
+}
+
+void CardSeven::Load(ifstream& InFile)
+{
+}

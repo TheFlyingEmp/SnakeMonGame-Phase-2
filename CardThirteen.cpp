@@ -78,3 +78,13 @@ void CardThirteen::Apply(Grid* pGrid, Player* pPlayer)
 		}
 	}
 }
+
+void CardThirteen::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CardPrice << " " << FeestoPay << endl;
+}
+
+void CardThirteen::Load(ifstream& InFile)
+{
+	InFile >> CardPrice >> FeestoPay;
+}

@@ -16,3 +16,12 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 	PlayerNewCellNum.AddCellNum(-1 * DiceValue); // Get the cell position of the previous cell
 	pGrid->UpdatePlayerCell(pPlayer, PlayerNewCellNum); // Move the player to the old cell
 }
+
+void CardSix::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << endl;
+}
+
+void CardSix::Load(ifstream& InFile)
+{
+}

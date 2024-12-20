@@ -18,6 +18,11 @@ class Player
 	                       // it is used to indicate when to move and when to add to your wallet
 	int ExtraDiceRolls;
 
+	int specialAttaksLeft;
+	int onFire;
+	int poisoned;
+
+
 	SetofOwnedCards CardsOwned[4];
 
 public:
@@ -43,8 +48,16 @@ public:
 	void SetjustRolledDiceNum(int d); // A Setter for the RolledDice
   
 	int GetExtraDiceRolls() const; // A Getter For the number of extra dice rolls
-	void SetExtraDiceRolls(int e);	 // A setter for the number of extra dice rolls (postive means extra rolls, 
-	// but negative means that for the next number of rolls will = to zero)
+	void SetExtraDiceRolls(int e);	 // A setter for the number of extra dice rolls (negative means that for the next number of rolls will = to zero)
+
+	int GetPoisoned() const;
+	void SetPosisond(int p);
+
+	int GetOnFire() const;
+	void SetOnFire(int f);
+
+	int GetSpecialAttaksLeft() const;
+	void SetSpecialAttacksLeft(int s);
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
