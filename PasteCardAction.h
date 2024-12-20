@@ -4,8 +4,6 @@
 
 class PasteCardAction : public Action
 {
-	Card* CardtoBePasted;
-
 public:
 	PasteCardAction(ApplicationManager* pApp);
 

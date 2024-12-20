@@ -3,6 +3,7 @@
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
+	cardNumber = 0;
 }
 
 void Card::SetCardNumber(int cnum)
@@ -13,6 +14,11 @@ void Card::SetCardNumber(int cnum)
 int Card::GetCardNumber()
 {
 	return cardNumber;
+}
+
+void Card::SetPosition(const CellPosition& pos)
+{
+	position = pos;
 }
 
 void Card::Draw(Output* pOut) const

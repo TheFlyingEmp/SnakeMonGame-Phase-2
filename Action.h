@@ -3,6 +3,8 @@
 #include "ApplicationManager.h"
 #include "Cell.h"
 
+class Card;
+
 // Base class for all possible actions (actions are icons of the toolbar)
 class Action
 {

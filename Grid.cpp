@@ -58,6 +58,28 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	return false; // if not a valid position
 }
 
+bool Grid::HasCardObject(const CellPosition& pos)
+{
+	if (pos.IsValidCell())
+	{
+		GameObject* pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		if (pPrevObject)
+			if (CellList[pos.VCell()][pos.HCell()]->HasCard())
+				return true;
+			else
+				return false;
+		else
+			return false;
+
+	}
+	return false;
+}
+
+GameObject* Grid::GetGameObjectFromCellList(const CellPosition& pos) const
+{
+	return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+}
+
 void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
