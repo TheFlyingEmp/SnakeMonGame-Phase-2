@@ -1,6 +1,6 @@
 #pragma once
 #include "Action.h"
-#include "Grid.h"
+#include "Card.h"
 
 class CopyCardAction : public Action
 {

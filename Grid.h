@@ -28,13 +28,13 @@ class Grid
 	int currPlayerNumber;   // The player number that has the turn to play 
 							// currPlayerNumber is: from 0 to MaxPlayerCount - 1
 
-	Card * Clipboard;	   // This is used in copy/cut/paste card (should be set in copy/cut and got in paste)
+	Card* Clipboard;	   // This is used in copy/cut/paste card (should be set in copy/cut and got in paste)
 
 	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the end cell of the grid or not)
 
 public:
 
-	Grid(Input * pIn, Output * pOut);	  // Gives the Grid a Pointer to the Output Object and the Input Object
+	Grid(Input* pIn, Output* pOut);	  // Gives the Grid a Pointer to the Output Object and the Input Object
 										  // and makes any needed initializations
 
 	// ========= Adding or Removing GameObjects to Cells =========
@@ -42,6 +42,10 @@ public:
 	bool AddObjectToCell(GameObject * pNewObject);		 // Adds a GameObject to the Cell of its "position" data member
 	                                                     // only if the Cell does NOT already contain an object, 
 	                                                     // otherwise return false and don't add
+
+	bool HasCardObject(const CellPosition& pos);
+
+	GameObject* GetGameObjectFromCellList(const CellPosition& pos) const;
 
 	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 
@@ -51,11 +55,11 @@ public:
 
 	// ========= Setters and Getters Functions =========
 
-	Input * GetInput() const;	// Gets a Pointer to the Input
-	Output * GetOutput() const; // Gets a Pointer to the Output 
+	Input* GetInput() const;	// Gets a Pointer to the Input
+	Output* GetOutput() const; // Gets a Pointer to the Output 
 
 	void SetClipboard(Card * card);  // A setter to be used in copy/cut (in order NOT to break class responsibilities)
-	Card * GetClipboard() const;	 // A getter to be used in paste (in order NOT to break class responsibilities)
+	Card* GetClipboard() const;	 // A getter to be used in paste (in order NOT to break class responsibilities)
 
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
@@ -96,4 +100,3 @@ public:
 	void LoadGrid(ifstream& InFile, string filename);
 	~Grid(); // A destructor for any needed deallcations
 };
-
