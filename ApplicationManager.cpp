@@ -2,6 +2,8 @@
 
 #include "Grid.h"
 #include "AddLadderAction.h"
+//#include "AddSnakeAction.h"
+//#include "ToPlayMode.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
 
@@ -60,6 +62,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 
+	case ADD_SNAKE:
+		//pAct = new AddSnakeAction(this);
+		break;
+
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
@@ -69,7 +75,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		//pAct = new ToPlayMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 	case ROLL_DICE:

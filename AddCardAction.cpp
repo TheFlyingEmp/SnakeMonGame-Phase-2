@@ -3,9 +3,9 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
-#include "CardTwo.h"
-#include "CardThree.h"
-#include "CardFour.h"
+//#include "CardTwo.h"
+//#include "CardThree.h"
+//#include "CardFour.h"
 #include "CardFive.h"
 #include "CardSix.h"
 #include "CardSeven.h"
@@ -79,7 +79,7 @@ void AddCardAction::Execute()
 	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
-	case 2:
+	/*case 2:
 		pCard = new CardTwo(cardPosition);
 		break;
 	case 3:
@@ -87,7 +87,7 @@ void AddCardAction::Execute()
 		break;
 	case 4:
 		pCard = new CardFour(cardPosition);
-		break;
+		break;*/
 	case 5:
 		pCard = new CardFive(cardPosition);
 		break;
