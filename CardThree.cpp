@@ -6,7 +6,7 @@ CardThree::CardThree(const CellPosition& pos) : Card(pos) // set the cell positi
 	cardNumber = 3; // set the inherited cardNumber data member with the card number (1 here)
 }
 
-CardThree::~CardThree(void)
+CardThree::~CardThree()
 {
 }
 void CardThree::ReadCardParameters(Grid* pGrid)
@@ -20,7 +20,6 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 		return;
 	else
 		pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
-<<<<<<< HEAD
 }
 
 void CardThree::Save(ofstream& OutFile)
@@ -30,8 +29,4 @@ void CardThree::Save(ofstream& OutFile)
 
 void CardThree::Load(ifstream& InFile)
 {
-=======
-		
-	
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 }

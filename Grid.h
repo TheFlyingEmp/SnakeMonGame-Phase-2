@@ -14,6 +14,19 @@ class Ladder;
 class Snake;
 class Card;
 class Player;
+class CardOne;
+class CardTwo;
+class CardThree;
+class CardFour;
+class CardFive;
+class CardSix;
+class CardSeven;
+class CardEight;
+class CardNine;
+class CardTen;
+class CardEleven;
+class CardTwelve;
+class CardThirteen;
 
 class Grid
 {
@@ -72,16 +85,11 @@ public:
 
 	// ========= Other Getters =========
 	
-<<<<<<< HEAD
+
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	//Snake * GetNextSnake(const CellPosition& position);
-=======
-	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
-	Ladder* GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	Snake* GetNextSnake(const CellPosition& position);
+	Snake * GetNextSnake(const CellPosition& position);
 
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 	// ========= User Interface Functions =========
 
 	void UpdateInterface() const;		// It Updates the Grid according to the last state of the game

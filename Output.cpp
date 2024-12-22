@@ -285,8 +285,11 @@ void Output::PrintPlayersInfo(string info)
 	//       (Use GetStringSize() window function) and set the "w" and "h" variables with its width and height
 
 	// Set the start X & Y coordinate of drawing the string
+
 	int x = UI.width - w - 20; // space 20 before the right-side of the window
+
 	// ( - w ) because x is the coordinate of the start point of the string (upper left)
+
 	int y = (UI.ToolBarHeight - h) / 2; // in the Middle of the toolbar height
 
 	///TODO:(done) Draw the string "info" in the specified location (x, y)
@@ -313,13 +316,8 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 		pWind->SetBrush(UI.CellColor_HasCard);
 
 	///TODO:(done) Draw the Cell Rectangle using the appropriate coordinates
-<<<<<<< HEAD
 	
 	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
-=======
-
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);

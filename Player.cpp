@@ -151,6 +151,11 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 
+	if (ExtraDiceRolls < 0)
+		{
+			ExtraDiceRolls++;
+			diceNumber = 0;
+		}
 	if (!turnCount)
 	{
 		SetWallet(GetWallet() + 10 * diceNumber);
@@ -163,10 +168,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		return;
 	}
 
-	if (ExtraDiceRolls < 0)
-	{
-		ExtraDiceRolls++;
-	}
+	
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
 	SetjustRolledDiceNum(diceNumber);

@@ -5,13 +5,23 @@
 #include "Ladder.h"
 #include "Snake.h"
 #include "Card.h"
-<<<<<<< HEAD
-#include "Snake.h"
-=======
 #include "ToPlayMode.h"
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 #include "Player.h"
 #include <fstream>
+#include "CardOne.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
+#include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+#include "CardThirteen.h"
+
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -191,6 +201,7 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	}
 	return NULL; // not found
 }
+
 Snake* Grid::GetNextSnake(const CellPosition& position)
 {
 
@@ -210,13 +221,6 @@ Snake* Grid::GetNextSnake(const CellPosition& position)
 	}
 	return NULL; // not found
 }
-
-
-
-/*Snake* Grid::GetNextSnake(const CellPosition& position)
-{
-	return nullptr;
-}*/
 
 
 // ========= User Interface Functions =========
@@ -334,7 +338,7 @@ void Grid::SaveGrid(ofstream& OutFile, string fileName)
 		}
 	}
 
-	/*OutFile << snakeNum << endl;
+	OutFile << snakeNum << endl;
 
 	for (int i = 0; i < NumHorizontalCells; i++)
 	{
@@ -345,9 +349,9 @@ void Grid::SaveGrid(ofstream& OutFile, string fileName)
 				CellList[i][j]->HasSnake()->Save(OutFile);
 			}
 		}
-	}*/ //wating for the snake class
+	}
 
-	/*OutFile << cardNum << endl;
+	OutFile << cardNum << endl;
 
 	for (int i = 0; i < NumHorizontalCells; i++)
 	{
@@ -358,7 +362,7 @@ void Grid::SaveGrid(ofstream& OutFile, string fileName)
 				CellList[i][j]->HasCard()->Save(OutFile);//, CellList[i][j]->GetCellPosition());
 			}
 		}
-	}*/
+	}
 
 	OutFile.close();
 }
@@ -387,7 +391,7 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 
 	InFile >> snakeNum;
 
-	/*for (int i = 0; i < snakeNum; i++)
+	for (int i = 0; i < snakeNum; i++)
 	{
 		InFile >> startCell >> endCell;
 
@@ -397,12 +401,12 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 		Snake* snakePtr = new Snake(startPos, endPos);
 
 		GetCellFromPosition(startPos)->SetGameObject(snakePtr);
-	}*?
+	}
 
 	int CardType, CardPos;
 	Card* cardPtr;
 
-	/*InFile >> cardNum;
+	InFile >> cardNum;
 
 	for (int i = 0; i < cardNum; i++)
 	{
@@ -457,12 +461,13 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 		case 10:
 			cardPtr = new CardTen(CardPos);
 			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
-			cardPtr->Load()
+			cardPtr->Load(InFile);
 			break;
 		
 		case 11:
 			cardPtr = new CardEleven(CardPos);
 			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			cardPtr->Load(InFile);
 			break;
 
 		case 12:
@@ -476,7 +481,7 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 			break;
 
 		}
-	}*/
+	}
 }
 
 Grid::~Grid()
