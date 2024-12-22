@@ -24,7 +24,6 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
 	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
@@ -72,11 +71,13 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 		} while (i < 4);
 
 		if (PlayerHasCard != true) {
-      
+
 			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
 		}
+	}
+}
 
 void CardTen::Save(ofstream& OutFile)
 {

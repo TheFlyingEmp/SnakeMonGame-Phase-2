@@ -13,7 +13,5 @@ public:
 
 	virtual void Load(ifstream& InFile);
 
-	// by moving the player to the next Ladder
-
 	virtual ~CardFour(); // A Virtual Destructor
 };

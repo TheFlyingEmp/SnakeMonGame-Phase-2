@@ -76,8 +76,7 @@ public:
 	void SetCurrentPlayer(int current_player);
 	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder* GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	Snake* GetNextSnake(const CellPosition& position);
-	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
+	Snake* GetNextSnake(const CellPosition& position);                                
 
 	// ========= User Interface Functions =========
 

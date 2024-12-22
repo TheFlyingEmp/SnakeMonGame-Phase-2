@@ -24,7 +24,6 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
 	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
@@ -32,7 +31,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	Cell* CellPlayerisOn = pPlayer->GetCell();
 
 	Card::Apply(pGrid, pPlayer);
-  
+
 	if (IsBought == false) {
 		do {
 			if (EF > 0)
@@ -72,26 +71,12 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		} while (i < 4);
 
 		if (PlayerHasCard != true) {
-      
+
 			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
 			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
 
-	i = 0;
-	do {
-		if (pPlayer->GetCardsOwned(i) == Card_12) {
-			PlayerHasCard = true;
-			break;
 		}
-		i++;
-	} while (i < 4);
-
-	if (PlayerHasCard != true) {
-      
-		pGrid->PrintErrorMessage("the card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
-		pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
-		pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
-      
 	}
 }
 

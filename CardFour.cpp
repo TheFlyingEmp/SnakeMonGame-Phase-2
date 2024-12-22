@@ -6,7 +6,7 @@ CardFour::CardFour(const CellPosition& pos) : Card(pos) // set the cell position
 	cardNumber = 4; // set the inherited cardNumber data member with the card number (1 here)
 }
 
-CardFour::~CardFour(void)
+CardFour::~CardFour()
 {
 }
 void CardFour::ReadCardParameters(Grid* pGrid)
@@ -20,7 +20,6 @@ void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 		return;
 	else
 	pGrid->UpdatePlayerCell(pPlayer, pSnake->GetStartPosition());
-	
 }
 
 void CardFour::Save(ofstream& OutFile)

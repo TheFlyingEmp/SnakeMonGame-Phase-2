@@ -286,8 +286,11 @@ void Output::PrintPlayersInfo(string info)
 	//       (Use GetStringSize() window function) and set the "w" and "h" variables with its width and height
 
 	// Set the start X & Y coordinate of drawing the string
+
 	int x = UI.width - w - 20; // space 20 before the right-side of the window
+
 	// ( - w ) because x is the coordinate of the start point of the string (upper left)
+
 	int y = (UI.ToolBarHeight - h) / 2; // in the Middle of the toolbar height
 
 	///TODO:(done) Draw the string "info" in the specified location (x, y)

@@ -5,10 +5,22 @@
 #include "Ladder.h"
 #include "Snake.h"
 #include "Card.h"
-#include "Snake.h"
 #include "ToPlayMode.h"
 #include "Player.h"
 #include <fstream>
+#include "CardOne.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
+#include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+#include "CardThirteen.h"
 
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
@@ -488,7 +500,6 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 		case 10:
 			cardPtr = new CardTen(CardPos);
 			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
-			cardPtr->Load()
 			break;
 		
 		case 11:

@@ -18,9 +18,8 @@ public:
 
 	virtual void ReadActionParameters(); // Reads AddLadderAction action parameters (startPos, endPos)
 
-	virtual void Execute(); // Creates a new Ladder Object 
-	// then Sets this Ladder object to the GameObject Pointer of its Cell
-
+	virtual void Execute(); // Creates a new Snake Object 
+							// then Sets this Snake object to the GameObject Pointer of its Cell
 
 	virtual ~AddSnakeAction(); // Virtual Destructor
 

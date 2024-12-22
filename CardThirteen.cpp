@@ -30,9 +30,9 @@ void CardThirteen::Apply(Grid* pGrid, Player* pPlayer)
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 	Cell* CellPlayerisOn = pPlayer->GetCell();
-  
+
 	Card::Apply(pGrid, pPlayer);
-  
+
 	if (IsBought == false) {
 		do {
 			if (EF > 0)
@@ -62,21 +62,22 @@ void CardThirteen::Apply(Grid* pGrid, Player* pPlayer)
 
 	if (CellPlayerisOn->GetCellPosition() == position) {
 
-	i = 0;
-	do {
-		if (pPlayer->GetCardsOwned(i) == Card_13) {
-			PlayerHasCard = true;
-			break;
-		}
-		i++;
-	} while (i < 4);
+		i = 0;
+		do {
+			if (pPlayer->GetCardsOwned(i) == Card_13) {
+				PlayerHasCard = true;
+				break;
+			}
+			i++;
+		} while (i < 4);
 
-	if (PlayerHasCard != true) {
-      
-		pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
-		pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
-		pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
-      
+		if (PlayerHasCard != true) {
+
+			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
+			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
+
+		}
 	}
 }
 
