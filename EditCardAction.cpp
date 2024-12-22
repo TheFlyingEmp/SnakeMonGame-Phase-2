@@ -31,6 +31,8 @@ void EditCardAction::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 
+	AddCardAction* pct = new AddCardAction(pManager);
+
 	bool hascardObject = pGrid->HasGameObject(cardPosition);
 	if (!hascardObject)
 	{
@@ -45,11 +47,13 @@ void EditCardAction::Execute()
 			switch (pCard->GetCardNumber())
 			{
 			case 1:
+				
 				pGrid->RemoveObjectFromCell(pCard->GetPosition());
-				pManager->ExecuteAction(ADD_CARD);
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			case 2:
-				pManager->ExecuteAction(ADD_CARD);
+				pGrid->RemoveObjectFromCell(pCard->GetPosition());
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			case 3:
 				pGrid->PrintErrorMessage("Invalid Card type.Click anywhere to continue...");
@@ -70,21 +74,27 @@ void EditCardAction::Execute()
 				pGrid->PrintErrorMessage("Invalid Card type.Click anywhere to continue...");
 				break;
 			case 9:
-				pManager->ExecuteAction(ADD_CARD);
+				pGrid->RemoveObjectFromCell(pCard->GetPosition());
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			case 10:
-				pManager->ExecuteAction(ADD_CARD);
+				pGrid->RemoveObjectFromCell(pCard->GetPosition());
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			case 11:
-				pManager->ExecuteAction(ADD_CARD);
+				pGrid->RemoveObjectFromCell(pCard->GetPosition());
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			case 12:
-				pManager->ExecuteAction(ADD_CARD);
+				pGrid->RemoveObjectFromCell(pCard->GetPosition());
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			case 13:
-				pManager->ExecuteAction(ADD_CARD);
+				pGrid->RemoveObjectFromCell(pCard->GetPosition());
+				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
 			}
+			pOut->ClearStatusBar();
 		}
 
 		else

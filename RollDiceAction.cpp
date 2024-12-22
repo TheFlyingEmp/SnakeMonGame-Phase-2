@@ -8,6 +8,7 @@
 
 RollDiceAction::RollDiceAction(ApplicationManager *pApp) : Action(pApp)
 {
+	pManager = pApp;
 }
 
 void RollDiceAction::ReadActionParameters()
@@ -24,7 +25,7 @@ void RollDiceAction::Execute()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 	Grid* pGrid = pManager->GetGrid();
 	
-
+	//pGrid->SetEndGame(false);
 	if (pGrid->GetEndGame())
 		pGrid->PrintErrorMessage("Congratulations you won.");
 	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action

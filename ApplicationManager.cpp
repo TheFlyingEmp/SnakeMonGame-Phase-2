@@ -9,6 +9,7 @@
 #include "CutCardAction.h"
 #include "EditCardAction.h"
 #include "PasteCardAction.h"
+#include "DeleteGameObjectAction.h"
 
 #include "ToPlayMode.h"
 #include "RollDiceAction.h"
@@ -78,14 +79,21 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
 		break;
-	//case COPY_CARD:
-		//pAct = new CopyCardAction(this);
-		//break;
-	//case CUT_CARD:
-		//pAct = new CutCardAction(this);
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
 
 	case EDIT_CARD:
 		pAct = new EditCardAction(this);
+		break;
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 	case EXIT:

@@ -32,7 +32,7 @@ void InputDiceValue::Execute()
 	Output* pOut = pGrid->GetOutput();
 
 	if (pGrid->GetEndGame())
-		pGrid->PrintErrorMessage("Congratulations you won.");
+		pGrid->PrintErrorMessage("test.");
 	Player* pPlayer = pGrid->GetCurrentPlayer();
 	pPlayer->Move(pGrid, dicenumber);
 	pGrid->AdvanceCurrentPlayer();
