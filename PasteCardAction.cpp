@@ -9,7 +9,7 @@ void PasteCardAction::ReadActionParameters()
 {
 }
 
-void PasteCardAction::Execute()
+void PasteCardAction::Execute() 
 {
 	Grid* pGrid = pManager->GetGrid();
 	Input* pIn = pGrid->GetInput();

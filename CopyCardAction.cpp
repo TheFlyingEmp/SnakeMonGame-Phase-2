@@ -16,18 +16,16 @@ void CopyCardAction::Execute()
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 
-	pGrid->PrintErrorMessage("Please, click on the source cell");
+	pOut->PrintMessage("Please, click on the source cell");
 	CellPosition TargetCellPos = pIn->GetCellClicked();
 	if (TargetCellPos.IsValidCell()) {
-		if (pGrid->HasGameObject(TargetCellPos))
+		if (pGrid->HasCardObject(TargetCellPos))
 		{
-			Card* pCard = dynamic_cast<Card*>(pGrid->GetGameObjectfromCell(TargetCellPos));
+			Card* pCard = dynamic_cast<Card*>(pGrid->GetGameObjectFromCellList(TargetCellPos));
 			pGrid->SetClipboard(pCard);
 		}
-		else
-		{
+		else {
 			pGrid->PrintErrorMessage("Invalid, the clicked cell does not have a card in it");
-
 			return;
 		}
 	}
@@ -40,5 +38,4 @@ void CopyCardAction::Execute()
 
 CopyCardAction::~CopyCardAction()
 {
-
 }

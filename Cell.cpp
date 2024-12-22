@@ -48,7 +48,7 @@ GameObject * Cell::GetGameObject() const
 
 Ladder * Cell::HasLadder() const
 {
-	return dynamic_cast<Ladder *>(pGameObject);
+	return dynamic_cast<Ladder*>(pGameObject);
 }
 
 Snake * Cell::HasSnake() const
@@ -56,16 +56,15 @@ Snake * Cell::HasSnake() const
 
 	///TODO: Implement the following function like HasLadder() function
 	return dynamic_cast<Snake*>(pGameObject);
-
+  
 	//return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
 
 Card * Cell::HasCard() const
 {
-	return dynamic_cast<Card*>(pGameObject);
 	///TODO: Implement the following function like HasLadder() function
 
-	//return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<Card*>(pGameObject);; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 
 }
 

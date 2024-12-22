@@ -8,15 +8,20 @@ class Player
 	Cell* pCell;		   // pointer to the current Cell of the player
 
 	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
-	// player number does NOT change after construction (const.)
+	                       // player number does NOT change after construction (const.)
 
 	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
 	int wallet;		       // player's wallet (how many coins he has -- integer)
 	int justRolledDiceNum; // the current dice number which is just rolled by the player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
-	// and reset again when reached 3
-	// it is used to indicate when to move and when to add to your wallet
+	                       // and reset again when reached 3
+	                       // it is used to indicate when to move and when to add to your wallet
 	int ExtraDiceRolls;
+
+	int specialAttaksLeft;
+	int onFire;
+	int poisoned;
+
 
 	SetofOwnedCards CardsOwned[4];
 
@@ -40,13 +45,21 @@ public:
 
 	SetofOwnedCards GetCardsOwned(int i) const;
 	void SetCardOwned(int i, SetofOwnedCards Card);
-
+  
 	int GetjustRolledDiceNum() const;// A getter for the RolledDice
 	void SetjustRolledDiceNum(int d); // A Setter for the RolledDice
-
+  
 	int GetExtraDiceRolls() const; // A Getter For the number of extra dice rolls
-	void SetExtraDiceRolls(int e);	 // A setter for the number of extra dice rolls (postive means extra rolls, 
-	// but negative means that for the next number of rolls will = to zero)
+	void SetExtraDiceRolls(int e);	 // A setter for the number of extra dice rolls (negative means that for the next number of rolls will = to zero)
+
+	int GetPoisoned() const;
+	void SetPosisond(int p);
+
+	int GetOnFire() const;
+	void SetOnFire(int f);
+
+	int GetSpecialAttaksLeft() const;
+	void SetSpecialAttacksLeft(int s);
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
@@ -59,10 +72,10 @@ public:
 	// ====== Game Functions ======
 
 	void Move(Grid* pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
-	// and Applies the Game Object's effect (if any) of the end reached cell 
-	// for example, if the end cell contains a ladder, take it
-
+	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
+	                                            // for example, if the end cell contains a ladder, take it
+	
 	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
-	// for example: P0(wallet, turnCount)
+	                                                   // for example: P0(wallet, turnCount)
 
 };

@@ -34,7 +34,7 @@ enum DESIGN_MODE_ITEMS // The items of the Design Mode (you should add more item
 	ITM_OPEN_GRID,
 	ITM_EXIT,
 	ITM_SWITCH_TO_PLAY_MODE,
-
+	
 	///TODO:(done) Add more items names here
 
 	DESIGN_ITM_COUNT	// no. of items ==> This should be the last line in this enum
@@ -67,10 +67,10 @@ struct UI_Info	// User Interface Info.
 		StatusBarHeight,		// Status Bar Height
 		ToolBarHeight,			// Tool Bar Height (distance from top of window to bottom line of toolbar)
 		MenuItemWidth;			// Width of each item in toolbar menu
-
+	
 	int CellHeight;				// Height of 1 CELL
 	int CellWidth;				// Width of 1 CELL
-
+	
 	color MsgColor;				// Messages color (usually used in statusbar)
 	color PlayerInfoColor;		// Players' Info color (used in the toolbar - right-indented)
 

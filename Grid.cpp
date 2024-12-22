@@ -5,8 +5,13 @@
 #include "Ladder.h"
 #include "Snake.h"
 #include "Card.h"
+<<<<<<< HEAD
+#include "Snake.h"
+=======
 #include "ToPlayMode.h"
+>>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 #include "Player.h"
+#include <fstream>
 
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
@@ -78,6 +83,28 @@ GameObject* Grid::GetGameObjectfromCell(const CellPosition& cellpositon)
 	return CellList[cellpositon.VCell()][cellpositon.HCell()]->GetGameObject();
 }
 
+bool Grid::HasCardObject(const CellPosition& pos)
+{
+	if (pos.IsValidCell())
+	{
+		GameObject* pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		if (pPrevObject)
+			if (CellList[pos.VCell()][pos.HCell()]->HasCard())
+				return true;
+			else
+				return false;
+		else
+			return false;
+
+	}
+	return false;
+}
+
+GameObject* Grid::GetGameObjectFromCellList(const CellPosition& pos) const
+{
+	return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+}
+
 void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
@@ -145,6 +172,21 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
+Cell * Grid::GetCellFromPosition(const CellPosition& pos)
+{
+	for (int i = 0; i < NumVerticalCells; i++)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->GetCellPosition() == pos)
+			{
+				return CellList[i][j];
+			}
+		}
+	}
+	return nullptr;
+}
+
 void Grid::SetCurrentPlayer(int current_player)
 {
 	this->currPlayerNumber = current_player;
@@ -199,6 +241,11 @@ Snake* Grid::GetNextSnake(const CellPosition& position)
 }
 
 
+
+/*Snake* Grid::GetNextSnake(const CellPosition& position)
+{
+	return nullptr;
+}*/
 
 
 // ========= User Interface Functions =========
@@ -281,6 +328,190 @@ void Grid::PrintErrorMessage(string msg)
 	pOut->ClearStatusBar();
 }
 
+
+void Grid::SaveGrid(ofstream& OutFile, string fileName)
+{
+	OutFile.open(fileName, ios::app);
+	int ladderNum, snakeNum, cardNum;
+	ladderNum = snakeNum = cardNum = 0;
+	for (int i = 0; i < NumVerticalCells; i++)
+	{
+		for (int j = 0; j < NumVerticalCells; i++)
+		{
+			if (!CellList[i][j]->HasLadder())
+			{
+				ladderNum++;
+			}
+
+			if (!CellList[i][j]->HasSnake())
+			{
+				snakeNum++;
+			}
+
+			if (!CellList[i][j]->HasCard())
+			{
+				cardNum++;
+			}
+		}
+	}
+
+	OutFile << ladderNum << endl;
+
+	for (int i = 0; i < NumHorizontalCells; i++)
+	{
+		for (int j = 0; j < NumVerticalCells; j++)
+		{
+			if (CellList[i][j]->HasLadder())
+			{
+				CellList[i][j]->HasLadder()->Save(OutFile);
+			}
+		}
+	}
+
+	/*OutFile << snakeNum << endl;
+
+	for (int i = 0; i < NumHorizontalCells; i++)
+	{
+		for (int j = 0; j < NumVerticalCells; j++)
+		{
+			if (CellList[i][j]->HasSnake())
+			{
+				CellList[i][j]->HasSnake()->Save(OutFile);
+			}
+		}
+	}*/ //wating for the snake class
+
+	/*OutFile << cardNum << endl;
+
+	for (int i = 0; i < NumHorizontalCells; i++)
+	{
+		for (int j = 0; j < NumVerticalCells; j++)
+		{
+			if (CellList[i][j]->HasCard())
+			{
+				CellList[i][j]->HasCard()->Save(OutFile);//, CellList[i][j]->GetCellPosition());
+			}
+		}
+	}*/
+
+	OutFile.close();
+}
+
+void Grid::LoadGrid(ifstream& InFile, string filename)
+{
+	InFile.open(filename, ios::in);
+
+	int ladderNum, snakeNum, cardNum;
+
+	int startCell, endCell;
+
+	InFile >> ladderNum;
+
+	for (int i = 0; i < ladderNum; i++)
+	{
+		InFile >> startCell >> endCell;
+
+		CellPosition startPos = CellPosition::GetCellPositionFromNum(startCell);
+		CellPosition endPos = CellPosition::GetCellPositionFromNum(endCell);
+
+		Ladder* ladderPtr = new Ladder(startPos, endPos);
+
+		GetCellFromPosition(startPos)->SetGameObject(ladderPtr);
+	}
+
+	InFile >> snakeNum;
+
+	/*for (int i = 0; i < snakeNum; i++)
+	{
+		InFile >> startCell >> endCell;
+
+		CellPosition startPos = CellPosition::GetCellPositionFromNum(startCell);
+		CellPosition endPos = CellPosition::GetCellPositionFromNum(endCell);
+
+		Snake* snakePtr = new Snake(startPos, endPos);
+
+		GetCellFromPosition(startPos)->SetGameObject(snakePtr);
+	}*?
+
+	int CardType, CardPos;
+	Card* cardPtr;
+
+	/*InFile >> cardNum;
+
+	for (int i = 0; i < cardNum; i++)
+	{
+		InFile >> CardType >> CardPos;
+		switch (CardType)
+		{
+		case 1:
+			cardPtr = new CardOne(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+
+		case 2:
+			cardPtr = new CardTwo(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+
+		case 3:
+			cardPtr = new CardThree(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 4:
+			cardPtr = new CardFour(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 5:
+			cardPtr = new CardFive(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 6:
+			cardPtr = new CardSix(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 7:
+			cardPtr = new CardSeven(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 8:
+			cardPtr = new CardEight(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 9:
+			cardPtr = new CardNine(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+		
+		case 10:
+			cardPtr = new CardTen(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			cardPtr->Load()
+			break;
+		
+		case 11:
+			cardPtr = new CardEleven(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+
+		case 12:
+			cardPtr = new CardTwelve(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+
+		case 13:
+			cardPtr = new CardThirteen(CardPos);
+			GetCellFromPosition(CardPos)->SetGameObject(cardPtr);
+			break;
+
+		}
+	}*/
+}
 
 Grid::~Grid()
 {

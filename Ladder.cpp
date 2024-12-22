@@ -20,6 +20,7 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 {
 	pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
@@ -35,6 +36,16 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
+}
+
+void Ladder::Save(ofstream& OutFile)
+{
+	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl; // prints the start and end positions in the file
+}
+
+void Ladder::Load(ifstream& InFile)
+{
+	return;
 }
 
 Ladder::~Ladder()

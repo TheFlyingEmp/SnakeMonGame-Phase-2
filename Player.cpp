@@ -6,8 +6,10 @@ Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNu
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
-	ExtraDiceRolls = 0;
-	justRolledDiceNum = 0;
+	this->ExtraDiceRolls = 0;
+	this->onFire = 0;
+	this->poisoned = 0;
+	this->specialAttaksLeft = 2;
 
 
 
@@ -86,6 +88,36 @@ void Player::SetExtraDiceRolls(int e)
 	ExtraDiceRolls = e;
 }
 
+int Player::GetPoisoned() const
+{
+	return poisoned;
+}
+
+void Player::SetPosisond(int p)
+{
+	poisoned = p;
+}
+
+int Player::GetOnFire() const
+{
+	return onFire;
+}
+
+void Player::SetOnFire(int f)
+{
+	onFire = f;
+}
+
+int Player::GetSpecialAttaksLeft() const
+{
+	return specialAttaksLeft;
+}
+
+void Player::SetSpecialAttacksLeft(int s)
+{
+	specialAttaksLeft = s;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -101,9 +133,9 @@ void Player::Draw(Output* pOut) const
 void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
-
+	
 	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, cellColor);
-
+	
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
 
 }
@@ -113,16 +145,18 @@ void Player::ClearDrawing(Output* pOut) const
 void Player::Move(Grid* pGrid, int diceNumber)
 {
 
+
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-	
-	
+
+
 	// == Here are some guideline steps (numbered below) to implement this function ==
-	
-		
+
+
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-
-	turnCount = (turnCount + 1 ) % 3;
+	
+	turnCount = (turnCount + 1) % 3;
 
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
@@ -138,6 +172,11 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	{
 		return;
 	}
+
+	if (ExtraDiceRolls < 0)
+	{
+		ExtraDiceRolls++;
+	}
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
 	SetjustRolledDiceNum(diceNumber);
@@ -146,10 +185,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	//    Using the appropriate function of CellPosition class to update "pos"
 
 	CellPosition pos = pCell->GetCellPosition(); // Gets the cell position by using the cell class 
-	//to get a cellposition then addind diceNum to it 
+										//to get a cellposition then addind diceNum to it 
 
-	//pos.SetHCell(7);
-	//pos.SetVCell(8);
 	pos.AddCellNum(diceNumber);
 
 	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)

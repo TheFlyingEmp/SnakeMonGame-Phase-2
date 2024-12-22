@@ -20,6 +20,18 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 		return;
 	else
 		pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
+<<<<<<< HEAD
+}
+
+void CardThree::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << endl;
+}
+
+void CardThree::Load(ifstream& InFile)
+{
+=======
 		
 	
+>>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 }

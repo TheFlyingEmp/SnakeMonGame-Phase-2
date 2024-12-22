@@ -2,6 +2,7 @@
 
 #include "Grid.h"
 #include "Player.h"
+#include <string>
 
 
 #include <time.h> // used to in srand to generate random numbers with different seed
@@ -24,8 +25,9 @@ void RollDiceAction::Execute()
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
 	
-	//pGrid->SetEndGame(false);
+
 	if (pGrid->GetEndGame())
 		pGrid->PrintErrorMessage("Congratulations you won.");
 	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action
@@ -44,7 +46,8 @@ void RollDiceAction::Execute()
 	// 5- Advance the current player number of pGrid
 	pGrid->UpdateInterface();
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
-	
+
+	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
 }
 

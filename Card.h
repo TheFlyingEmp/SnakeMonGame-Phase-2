@@ -18,7 +18,6 @@ public:
 	int GetCardNumber();            // The getter of card number
 
 	void SetPosition(const CellPosition& pos);
-	
 
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card
 	                                // It has the same implementation for all Card Types (Non-Virtual)
@@ -28,7 +27,6 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
-	
 
 	virtual ~Card(); // A Virtual Destructor
 };

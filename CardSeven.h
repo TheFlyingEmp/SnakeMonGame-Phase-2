@@ -8,4 +8,8 @@ public:
 
 	void Apply(Grid* pGrid, Player* pPlayer);
 
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& InFile);
 };
+

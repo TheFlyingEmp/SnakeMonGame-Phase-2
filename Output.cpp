@@ -130,7 +130,7 @@ void Output::DrawCardNumber(const CellPosition& cellPos, int cardNum) const
 
 	int w = 0, h = 0;
 
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 	pWind->GetIntegerSize(w, h, cardNum);
 
@@ -314,8 +314,13 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 		pWind->SetBrush(UI.CellColor_HasCard);
 
 	///TODO:(done) Draw the Cell Rectangle using the appropriate coordinates
+<<<<<<< HEAD
+	
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
+=======
 
 	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+>>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);
@@ -381,7 +386,8 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 		x += radius + 2 + radius; // because playerNum 1 and 3 are drawn in the second column of circles
 
 	///TODO:(done) Draw the player circle in center(x,y) and filled with the playerColor passed to the function
-	pWind->SetPen(playerColor);
+	pWind->SetPen(playerColor); // Had to add this function because for some reason whiout it the players' color 
+								// changes with every addition in Design Mode (for ex: add a ladder makes all players' color change to that of the ladder)
 	pWind->SetBrush(playerColor);
 	pWind->DrawCircle(x, y, radius);
 }

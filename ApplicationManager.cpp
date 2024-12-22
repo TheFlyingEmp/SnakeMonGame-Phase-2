@@ -3,7 +3,8 @@
 #include "Grid.h"
 #include "ToDesignMode.h"
 #include "AddLadderAction.h"
-#include "AddSnakeAction.h"
+//#include "AddSnakeAction.h"
+//#include "ToPlayMode.h"
 #include "AddCardAction.h"
 #include "CopyCardAction.h"
 #include "CutCardAction.h"
@@ -72,7 +73,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case ADD_SNAKE:
-		pAct = new AddSnakeAction(this);
 		break;
 
 	case ADD_CARD:
@@ -100,7 +100,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pAct = new ToPlayMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 	case ROLL_DICE:
@@ -116,7 +115,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_DESIGN_MODE:
-		pAct = new ToDesignMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 		

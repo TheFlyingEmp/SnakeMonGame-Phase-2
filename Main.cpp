@@ -1,7 +1,6 @@
 
 #include "ApplicationManager.h"
 
-
 // This Main Function Must NOT be Changed
 
 int main()
@@ -23,9 +22,7 @@ int main()
 		AppManager.UpdateInterface();
 
 	} while(ActType != EXIT);
-	
 
-	
 
 	return 0;
 }

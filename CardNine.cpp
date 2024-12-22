@@ -5,7 +5,7 @@ CardNine::CardNine(const CellPosition& pos) : Card(pos)
 	cardNumber = 9;
 }
 
-void CardNine::ReadCardParameters(Grid* pGrid)
+void CardNine::ReadCardParameters(Grid* pGrid) 
 {
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
@@ -15,11 +15,20 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	CelltoBeMovedTo = pIn->GetInteger(pOut);
 }
 
-void CardNine::Apply(Grid* pGrid, Player* pPlayer)
+void CardNine::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	Card::Apply(pGrid, pPlayer);
 
 	pGrid->PrintErrorMessage("The player: " + to_string(pPlayer->GetPlayerNum()) + " will be moved to cell " + to_string(CelltoBeMovedTo));
 
 	pPlayer->Move(pGrid, CelltoBeMovedTo);
+}
+
+void CardNine::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CelltoBeMovedTo << endl;
+}
+
+void CardNine::Load(ifstream& InFile)
+{
 }

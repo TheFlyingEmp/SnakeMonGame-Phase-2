@@ -4,12 +4,12 @@
 CellPosition::CellPosition()
 {
 	// (-1) indicating an invalid cell (uninitialized by the user)
-	vCell = -1;
-	hCell = -1;
+	vCell = -1; 
+	hCell = -1; 
 }
 
 CellPosition::CellPosition(int v, int h)
-{
+{ 
 	// (-1) indicating an invalid cell (uninitialized by the user)
 
 	SetVCell(v);
@@ -19,9 +19,9 @@ CellPosition::CellPosition(int v, int h)
 CellPosition::CellPosition(int cellNum)
 {
 	(*this) = GetCellPositionFromNum(cellNum); // the function call with build a cell position (vCell and hCell)
-	// from the passed (cellNum)
-	// (*this) = ... --> this will copy the returned (vCell and hCell)
-	//                   to the data members (vCell and hCell)
+												// from the passed (cellNum)
+												// (*this) = ... --> this will copy the returned (vCell and hCell)
+												//                   to the data members (vCell and hCell)
 }
 
 bool CellPosition::SetVCell(int v)
@@ -39,7 +39,7 @@ bool CellPosition::SetVCell(int v)
 	}
 }
 
-bool CellPosition::SetHCell(int h)
+bool CellPosition::SetHCell(int h) 
 {
 	///TODO:(done) Implement this function as described in the .h file (don't forget the validation)
 
@@ -52,15 +52,15 @@ bool CellPosition::SetHCell(int h)
 		hCell = -1;
 		return false;
 	}
-	// this line sould be changed with your implementation
+	 // this line sould be changed with your implementation
 }
 
-int CellPosition::VCell() const
+int CellPosition::VCell() const 
 {
 	return vCell;
 }
 
-int CellPosition::HCell() const
+int CellPosition::HCell() const 
 {
 	return hCell;
 }
@@ -77,7 +77,7 @@ bool CellPosition::IsValidCell() const
 int CellPosition::GetCellNum() const
 {
 	return GetCellNumFromPosition(*this); // (*this) is the calling object of GetCellNum
-	// which means the object of the current data members (vCell and hCell)
+										  // which means the object of the current data members (vCell and hCell)
 }
 
 int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
@@ -89,11 +89,9 @@ int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
 	///TODO:(done) Implement this function as described in the .h file
 
 	if (cellPosition.IsValidCell())
-	{
-		return 89 + cellPosition.HCell() - cellPosition.VCell() * NumHorizontalCells;
-	}
+		return (NumHorizontalCells * NumVerticalCells - NumHorizontalCells + 1) + cellPosition.HCell() - cellPosition.VCell() * NumHorizontalCells;
 	else return -1;
-		
+
 
 	// this line should be changed with your implementation
 }
@@ -111,7 +109,7 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 		position.SetHCell(-1);
 		position.SetVCell(-1);
 	}
-
+	
 
 	/// TODO:(done) Implement this function as described in the .h file
 
@@ -126,7 +124,7 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 
 void CellPosition::AddCellNum(int addedNum)
 {
-
+	
 	/// TODO:(done) Implement this function as described in the .h file
 	//vCell = 8;
 	//hCell = 7;
