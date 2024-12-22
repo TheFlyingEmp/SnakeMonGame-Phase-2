@@ -314,13 +314,8 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 		pWind->SetBrush(UI.CellColor_HasCard);
 
 	///TODO:(done) Draw the Cell Rectangle using the appropriate coordinates
-<<<<<<< HEAD
-	
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
-=======
 
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);

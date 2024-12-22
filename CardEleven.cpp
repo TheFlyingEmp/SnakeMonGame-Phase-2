@@ -1,7 +1,6 @@
 #include "CardEleven.h"
 
 bool CardEleven::IsBought = false;
-bool CardEleven::PlayerHasCard = false;
 
 CardEleven::CardEleven(const CellPosition& pos) : Card(pos) {
 	cardNumber = 11;
@@ -25,15 +24,11 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
 	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
-<<<<<<< HEAD
 	Cell* CellPlayerisOn = pPlayer->GetCell();
-=======
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 
 	Card::Apply(pGrid, pPlayer);
   
@@ -64,7 +59,6 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 		else return;
 	}
 
-<<<<<<< HEAD
 	if (CellPlayerisOn->GetCellPosition() == position) {
 
 		i = 0;
@@ -75,15 +69,6 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 			}
 			i++;
 		} while (i < 4);
-
-	i = 0;
-	do {
-		if (pPlayer->GetCardsOwned(i) == Card_11) {
-			PlayerHasCard = true;
-			break;
-		}
-		i++;
-	} while (i < 4);
 
 	if (PlayerHasCard != true) {
       

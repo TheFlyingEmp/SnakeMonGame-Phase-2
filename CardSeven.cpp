@@ -11,8 +11,9 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 	pGrid->PrintErrorMessage("Player " + to_string(pPlayer->GetPlayerNum()) + " will roll the dice again");
 
-	ApplicationManager CardAppManage = ApplicationManager();
-	CardAppManage.ExecuteAction(ROLL_DICE);
+	srand((int)time(NULL));
+	int DiceRoll = 1 + rand() % 6;
+	pPlayer->Move(pGrid, DiceRoll);
 }
 
 void CardSeven::Save(ofstream& OutFile)
@@ -22,7 +23,4 @@ void CardSeven::Save(ofstream& OutFile)
 
 void CardSeven::Load(ifstream& InFile)
 {
-	srand((int)time(NULL));
-	int DiceRoll = 1 + rand() % 6;
-	pPlayer->Move(pGrid, DiceRoll);
 }

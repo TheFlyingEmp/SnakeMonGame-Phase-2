@@ -126,8 +126,6 @@ void CellPosition::AddCellNum(int addedNum)
 {
 	
 	/// TODO:(done) Implement this function as described in the .h file
-	//vCell = 8;
-	//hCell = 7;
 	CellPosition pos = GetCellPositionFromNum(GetCellNum() + addedNum);
 	vCell = pos.VCell();
 	hCell = pos.HCell();

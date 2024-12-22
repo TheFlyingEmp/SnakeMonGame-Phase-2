@@ -34,7 +34,6 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
 	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
-<<<<<<< HEAD
 }
 
 void CardTwo::Save(ofstream& OutFile)
@@ -44,8 +43,4 @@ void CardTwo::Save(ofstream& OutFile)
 
 void CardTwo::Load(ifstream& InFile)
 {
-=======
-
-
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 }

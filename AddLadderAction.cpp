@@ -28,17 +28,10 @@ void AddLadderAction::ReadActionParameters()
 	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
 
-<<<<<<< HEAD
 	if (endPos.VCell() >= startPos.VCell())
 		pGrid->PrintErrorMessage("Inalid Inputs please retry again. Click anywhere to continue ");
 
 	if (endPos.HCell() != endPos.HCell())
-=======
-	if (endPos.VCell() >= startPos.VCell()) 
-		pGrid->PrintErrorMessage("Inalid Inputs please retry again. Click anywhere to continue ");
-	
-	if(endPos.HCell() != endPos.HCell())
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 		pGrid->PrintErrorMessage("Inalid Inputs please retry again. Click anywhere to continue ");
 
 	///TODO: Make the needed validations on the read parameters

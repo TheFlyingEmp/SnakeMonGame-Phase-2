@@ -5,11 +5,8 @@
 #include "Ladder.h"
 #include "Snake.h"
 #include "Card.h"
-<<<<<<< HEAD
 #include "Snake.h"
-=======
 #include "ToPlayMode.h"
->>>>>>> 4897b028f2cd117db7bf6b02f7f799ccb08e6643
 #include "Player.h"
 #include <fstream>
 
@@ -421,7 +418,7 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 
 	InFile >> snakeNum;
 
-	/*for (int i = 0; i < snakeNum; i++)
+	for (int i = 0; i < snakeNum; i++)
 	{
 		InFile >> startCell >> endCell;
 
@@ -431,12 +428,12 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 		Snake* snakePtr = new Snake(startPos, endPos);
 
 		GetCellFromPosition(startPos)->SetGameObject(snakePtr);
-	}*?
+	}
 
 	int CardType, CardPos;
 	Card* cardPtr;
 
-	/*InFile >> cardNum;
+	InFile >> cardNum;
 
 	for (int i = 0; i < cardNum; i++)
 	{
@@ -510,7 +507,7 @@ void Grid::LoadGrid(ifstream& InFile, string filename)
 			break;
 
 		}
-	}*/
+	}
 }
 
 Grid::~Grid()

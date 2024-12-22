@@ -74,13 +74,10 @@ public:
 
 	// ========= Other Getters =========
 	void SetCurrentPlayer(int current_player);
-	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
-	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	//Snake * GetNextSnake(const CellPosition& position);
-=======
 	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder* GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	Snake* GetNextSnake(const CellPosition& position);
+	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 
 	// ========= User Interface Functions =========
 
@@ -98,6 +95,7 @@ public:
 	void SaveGrid(ofstream& OutFile, string fileName);
 
 	void LoadGrid(ifstream& InFile, string filename);
+
 	~Grid(); // A destructor for any needed deallcations
 };
 

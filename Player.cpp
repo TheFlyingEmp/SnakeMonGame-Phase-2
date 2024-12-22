@@ -205,7 +205,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 
-	if (pos.GetCellNum() <= 99)
+	if (pos.GetCellNum() >= 99)
 	{
 		pos = pCell->GetCellPosition().GetCellPositionFromNum(99);
 		pGrid->SetEndGame(true);
