@@ -11,7 +11,9 @@ Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNu
 	this->poisoned = 0;
 	this->specialAttaksLeft = 2;
 
-
+	for (int i = 0; i < 4; i++) {
+		CardsOwned[i] = Does_Not_Own;
+	}
 
 	// Make all the needed initialization or validations
 }

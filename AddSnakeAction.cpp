@@ -22,18 +22,23 @@ void AddSnakeAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 
 	// Read the startPos parameter
-	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
-	startPos = pIn->GetCellClicked();
+	pOut->PrintMessage("New Snake: Click on its Start Cell...");
+	CellPosition TempstartPos = pIn->GetCellClicked();
 
 	// Read the endPos parameter
 	pOut->PrintMessage("New Snake: Click on its End Cell ...");
-	endPos = pIn->GetCellClicked();
+	CellPosition TempendPos = pIn->GetCellClicked();
 
-	if ((endPos.VCell() >= startPos.VCell()))
-		pGrid->PrintErrorMessage("Inalid Inputs please retry again. Click anywhere to continue ");
-
-	if (endPos.HCell() != endPos.HCell())
-		pGrid->PrintErrorMessage("Inalid Inputs please retry again. Click anywhere to continue ");
+	if ((TempendPos.VCell() <= TempstartPos.VCell()) || (TempendPos.HCell() != TempendPos.HCell()))
+	{
+		pGrid->PrintErrorMessage("Invalid input detected, Click anywhere to continue ");
+		return;
+	}
+	else
+	{
+		startPos = TempstartPos;
+		endPos = TempendPos;
+	}
 
 	///TODO: Make the needed validations on the read parameters
 
@@ -51,20 +56,23 @@ void AddSnakeAction::Execute()
 	// and hence initializes its data members
 	ReadActionParameters();
 
-	// Create a Snake object with the parameters read from the user
-	Snake* pSnake = new Snake(startPos, endPos);
-
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-	// Add the card object to the GameObject of its Cell:
-	bool added = pGrid->AddObjectToCell(pSnake);
-
-	// if the GameObject cannot be added
-	if (!added)
+	// Create a Snake object with the parameters read from the user
+	if (startPos.IsValidCell() && endPos.IsValidCell())
 	{
-		// Print an appropriate message
-		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
-	}
-	// Here, the Snake is created and added to the GameObject of its Cell, so we finished executing the AddSnakeAction
+		Snake* pSnake = new Snake(startPos, endPos);
 
+		// Add the card object to the GameObject of its Cell:
+		bool added = pGrid->AddObjectToCell(pSnake);
+
+		// if the GameObject cannot be added
+		if (!added)
+		{
+			// Print an appropriate message
+			pGrid->PrintErrorMessage("Error: Could not add GameObject to the desired cell! Click to continue ...");
+		}
+	}
+	else pGrid->PrintErrorMessage("Error: Could not add GameObject to the desired cell! Click to continue ...");
+	// Here, the Snake is created and added to the GameObject of its Cell, so we finished executing the AddSnakeAction
 }

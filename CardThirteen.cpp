@@ -50,7 +50,7 @@ void CardThirteen::Apply(Grid* pGrid, Player* pPlayer)
 			IsBought = true;
 			i = 0;
 			do {
-				if (pPlayer->GetCardsOwned(i) == NULL) {
+				if (pPlayer->GetCardsOwned(i) == Does_Not_Own) {
 					pPlayer->SetCardOwned(i, Card_13);
 					break;
 				}

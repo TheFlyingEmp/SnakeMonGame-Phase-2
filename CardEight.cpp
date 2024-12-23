@@ -14,7 +14,7 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
-  Card::Apply(pGrid, pPlayer);
+	Card::Apply(pGrid, pPlayer);
 	pPlayer->SetExtraDiceRolls(-1);
 }
 

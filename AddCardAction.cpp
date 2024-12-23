@@ -41,7 +41,7 @@ void AddCardAction::ReadActionParameters()
 		return;
 	}
 
-	pOut->PrintMessage("Please Click on a Cell to input  card position.....");
+	pOut->PrintMessage("Please Click on a Cell to input card position.....");
 	cardPosition = pIn->GetCellClicked();
 	if (!(cardPosition.IsValidCell())) {
 		pGrid->PrintErrorMessage("Invalid, please click on a valid cell...");
@@ -125,14 +125,14 @@ void AddCardAction::Execute()
 	if (pCard)
 	{
 		Grid* pGrid = pManager->GetGrid();
+
 		pCard->ReadCardParameters(pGrid);
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
-		bool added = pGrid->AddObjectToCell(pCard);
-		// C- Add the card object to the GameObject of its Cell:
 		bool isadded = pGrid->AddObjectToCell(pCard);
-		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
+		// C- Add the card object to the GameObject of its Cell:
 		if (isadded == false)
-			pGrid->PrintErrorMessage("The card could not be added to the desired cell...");
+		pGrid->PrintErrorMessage("The card could not be added to the desired cell...");
+		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
 	}
 
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction

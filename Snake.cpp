@@ -1,21 +1,21 @@
 #include "Snake.h"
 
-Snake::Snake(const CellPosition& StartCellPos, const CellPosition& endCellPos) : GameObject(endCellPos)
+Snake::Snake(const CellPosition& StartCellPos, const CellPosition& EndCellPos) : GameObject(StartCellPos)
 {
-	this->StartCellPos = StartCellPos;
+	this->EndCellPos = EndCellPos;
 
 	///TODO: Do the needed validation
 }
 
 void Snake::Draw(Output* pOut) const
 {
-	pOut->DrawSnake(position, StartCellPos);
+	pOut->DrawSnake(position, EndCellPos);
 }
 
 void Snake::Apply(Grid* pGrid, Player* pPlayer)
 {
 	pGrid->PrintErrorMessage("You have reached a Snake. Click to continue ...");
-	pGrid->UpdatePlayerCell(pPlayer, StartCellPos);
+	pGrid->UpdatePlayerCell(pPlayer, EndCellPos);
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
@@ -28,19 +28,9 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
-CellPosition Snake::GetStartPosition() const
+CellPosition Snake::GetEndPosition() const
 {
-	return StartCellPos;
-}
-
-void Snake::Save(ofstream& OutFile)
-{
-	OutFile << StartCellPos.GetCellNum() << " " << position.GetCellNum() << endl; // prints the start and end positions in the file
-}
-
-void Snake::Load(ifstream& InFile)
-{
-	return;
+	return EndCellPos;
 }
 
 Snake::~Snake()

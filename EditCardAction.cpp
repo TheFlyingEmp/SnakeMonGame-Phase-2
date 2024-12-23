@@ -47,7 +47,6 @@ void EditCardAction::Execute()
 			switch (pCard->GetCardNumber())
 			{
 			case 1:
-				
 				pGrid->RemoveObjectFromCell(pCard->GetPosition());
 				pct->ReadActionForEdit(pCard->GetPosition());
 				break;
