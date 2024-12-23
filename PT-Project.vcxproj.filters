@@ -193,6 +193,51 @@
     <ClCompile Include="PasteCardAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="CardEight.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardEleven.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFive.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFour.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardNine.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardSeven.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardSix.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardTen.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardThirteen.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardThree.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardTwelve.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardTwo.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSnakeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ToPlayMode.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -312,6 +357,51 @@
     </ClInclude>
     <ClInclude Include="PasteCardAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CardEight.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardEleven.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFive.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFour.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardNine.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardSeven.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardSix.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardTen.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardThirteen.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardThree.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardTwelve.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardTwo.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSnakeAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ToPlayMode.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
