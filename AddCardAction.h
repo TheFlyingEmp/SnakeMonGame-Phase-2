@@ -19,6 +19,8 @@ public:
 	                        // and Reads the Parameters of This Card Number (if any)
 	                        // then Sets this Card Object to GameObject Pointer of its Cell
 	
+	virtual void ReadActionForEdit(const CellPosition& pos);
+	
 	virtual ~AddCardAction(); // A Virtual Destructor
 };
 

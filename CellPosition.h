@@ -6,9 +6,9 @@ class CellPosition
 	int hCell; // the horizontal cell number: starts from 0 to NumHorizontalCells - 1
 
 public:
-	CellPosition (); // Initializes the cell to (-1,-1) indicating not initialized with valid values
-	CellPosition (int v, int h); // Sets vCell and hCell if valid
-	CellPosition (int cellNum);  // Sets vCell and hCell from the passed cellNum if valid
+	CellPosition(); // Initializes the cell to (-1,-1) indicating not initialized with valid values
+	CellPosition(int v, int h); // Sets vCell and hCell if valid
+	CellPosition(int cellNum);  // Sets vCell and hCell from the passed cellNum if valid
 
 	// Note: this class does NOT deal with real coordinates, it deals with the "vCell", "hCell" and "cellNum" instead
 
@@ -47,7 +47,7 @@ public:
 	int GetCellNum() const;   // Gets the cellNum from the vCell and hCell of the cell position
 
 	///TODO: IMPLEMENT THE FOLLOWING FUNCTION
-	static int GetCellNumFromPosition(const CellPosition & cellPosition);  // Calculates the cellNum of the passed "cellPosition"
+	static int GetCellNumFromPosition(const CellPosition& cellPosition);  // Calculates the cellNum of the passed "cellPosition"
 																		   // It is a static function (no need for a calling obj)
 
 	///TODO: IMPLEMENT THE FOLLOWING FUNCTION
@@ -55,7 +55,7 @@ public:
 															 // It is a static function (no need for a calling obj)
 
 	///TODO: IMPLEMENT THE FOLLOWING FUNCTION
-	void AddCellNum (int addedNum); // Adds the passed "addedNum" to the "cellNum" of the current cell position
+	void AddCellNum(int addedNum); // Adds the passed "addedNum" to the "cellNum" of the current cell position
 	                                // and updates the data members (vCell and hCell) accordingly
 	                                // for example, if cellNum = 50 and the passed num = 6
 	                                // this will make cellNum = 56 which updates the data members: vCell = 3 and hCell = 0 
@@ -63,4 +63,3 @@ public:
 
 	bool operator == (const CellPosition position);
 };
-

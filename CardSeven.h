@@ -1,6 +1,6 @@
 #pragma once
 #include "Card.h"
-#include "ApplicationManager.h"
+#include <time.h>
 class CardSeven : public Card
 {
 public:
@@ -8,5 +8,8 @@ public:
 
 	void Apply(Grid* pGrid, Player* pPlayer);
 
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& InFile);
 };
 

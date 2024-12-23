@@ -15,7 +15,6 @@ int Card::GetCardNumber()
 {
 	return cardNumber;
 }
-
 void Card::SetPosition(const CellPosition& pos)
 {
 	position = pos;
@@ -23,9 +22,9 @@ void Card::SetPosition(const CellPosition& pos)
 
 void Card::Draw(Output* pOut) const
 {
-
+	pOut->DrawCell(position, this->cardNumber);
 	///TODO: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
-	pOut->DrawCell(position, cardNumber);
+
 
 }
 

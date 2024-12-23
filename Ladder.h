@@ -18,6 +18,10 @@ public:
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& InFile);
+
 	virtual ~Ladder(); // Virtual destructor
 };
 

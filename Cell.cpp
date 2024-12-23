@@ -28,13 +28,17 @@ CellPosition Cell::GetCellPosition() const
 	return position;
 }
 
+
 bool Cell::SetGameObject(GameObject * pGObj)
 {
 	if (pGameObject != NULL) // already contains one
+	{
+		//pGameObject = NULL;
 		return false; // do NOT add it and return false
-
+	}
 	pGameObject = pGObj;
 	return true;
+		
 }
 
 GameObject * Cell::GetGameObject() const
@@ -51,13 +55,13 @@ Snake * Cell::HasSnake() const
 {
 
 	///TODO: Implement the following function like HasLadder() function
-
-	return  dynamic_cast<Snake*>(pGameObject); // Modified: Made to be like Ladder
+	return dynamic_cast<Snake*>(pGameObject);
+  
+	//return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
 
 Card * Cell::HasCard() const
 {
-
 	///TODO: Implement the following function like HasLadder() function
 
 	return dynamic_cast<Card*>(pGameObject);; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION

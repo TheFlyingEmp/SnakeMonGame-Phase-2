@@ -5,6 +5,15 @@ CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position 
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
 }
 
+void CardOne::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << endl;
+}
+
+void CardOne::Load(ifstream& InFile)
+{
+}
+
 CardOne::~CardOne(void)
 {
 }

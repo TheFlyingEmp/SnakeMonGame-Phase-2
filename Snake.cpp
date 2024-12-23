@@ -33,6 +33,16 @@ CellPosition Snake::GetStartPosition() const
 	return StartCellPos;
 }
 
+void Snake::Save(ofstream& OutFile)
+{
+	OutFile << StartCellPos.GetCellNum() << " " << position.GetCellNum() << endl; // prints the start and end positions in the file
+}
+
+void Snake::Load(ifstream& InFile)
+{
+	return;
+}
+
 Snake::~Snake()
 {
 }

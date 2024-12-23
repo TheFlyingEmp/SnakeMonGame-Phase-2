@@ -13,5 +13,9 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTwo on the passed Player
 	// by incrementing the player's wallet by the walletAmount data member
 
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& InFile);
+
 	virtual ~CardTwo(); // A Virtual Destructor
 };

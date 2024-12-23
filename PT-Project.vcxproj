@@ -187,16 +187,21 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="CopyCardAction.cpp" />
     <ClCompile Include="CutCardAction.cpp" />
+    <ClCompile Include="DeleteGameObjectAction.cpp" />
+    <ClCompile Include="EditCardAction.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputDiceValueAction.cpp" />
     <ClCompile Include="Ladder.cpp" />
+    <ClCompile Include="NewGameAction.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PasteCardAction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="ToDesignMode.cpp" />
     <ClCompile Include="ToPlayMode.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -244,15 +249,20 @@
     <ClInclude Include="CopyCardAction.h" />
     <ClInclude Include="CutCardAction.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="DeleteGameObjectAction.h" />
+    <ClInclude Include="EditCardAction.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="InputDiceValueAction.h" />
     <ClInclude Include="Ladder.h" />
+    <ClInclude Include="NewGameAction.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="ToDesignMode.h" />
     <ClInclude Include="ToPlayMode.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>

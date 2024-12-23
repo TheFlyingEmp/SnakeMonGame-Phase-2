@@ -1,9 +1,21 @@
 #include "ApplicationManager.h"
 
 #include "Grid.h"
+#include "ToDesignMode.h"
 #include "AddLadderAction.h"
+//#include "AddSnakeAction.h"
+//#include "ToPlayMode.h"
 #include "AddCardAction.h"
+#include "CopyCardAction.h"
+#include "CutCardAction.h"
+#include "EditCardAction.h"
+#include "PasteCardAction.h"
+#include "DeleteGameObjectAction.h"
+
+#include "ToPlayMode.h"
 #include "RollDiceAction.h"
+#include "InputDiceValueAction.h"
+#include "NewGameAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -60,16 +72,34 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 
+	case ADD_SNAKE:
+		break;
+
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
+		break;
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
+
+	case EDIT_CARD:
+		pAct = new EditCardAction(this);
+		break;
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 	case EXIT:
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 	case ROLL_DICE:
@@ -77,8 +107,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new RollDiceAction(this);
 		break;
 
+	case INPUT_DICE_VALUE:
+		pAct = new InputDiceValue(this);
+		break;
+	case NEW_GAME:
+		pAct = new NewGameAction(this);
+		break;
+
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 		

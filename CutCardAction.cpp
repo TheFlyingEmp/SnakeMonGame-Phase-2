@@ -18,9 +18,9 @@ void CutCardAction::Execute()
 	pOut->PrintMessage("Please, click on the source cell");
 	CellPosition TargetCellPos = pIn->GetCellClicked();
 	if (TargetCellPos.IsValidCell()) {
-		if (pGrid->HasCardObject(TargetCellPos))
+		if (pGrid->HasGameObject(TargetCellPos))
 		{
-			Card* pCard = dynamic_cast<Card*>(pGrid->GetGameObjectFromCellList(TargetCellPos));
+			Card* pCard = dynamic_cast<Card*>(pGrid->GetGameObjectfromCell(TargetCellPos));
 			pGrid->SetClipboard(pCard);
 			pGrid->RemoveObjectFromCell(TargetCellPos);
 		}

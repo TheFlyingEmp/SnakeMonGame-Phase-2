@@ -13,7 +13,7 @@ Input::Input(window* pW)
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
-void Input::GetPointClicked(int &x, int &y) const
+void Input::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x,y); // Note: x and y of WaitMouseClick are sent by reference
 }
@@ -42,13 +42,20 @@ string Input::GetString(Output* pO) const
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
-int Input::GetInteger(Output *pO) const 
+int Input::GetInteger(Output* pO) const
 {
+	int ConvertedInt;
+	int x = 0, y = 0;
 
 	///TODO:(done) implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
-
-	int ConvertedInt = stoi(GetString(pO));
+	try {
+		ConvertedInt = stoi(GetString(pO));
+	}
+	catch (const exception& e) {
+		pO->PrintMessage("Error of type: " + string(e.what()) + " was detected, please input a valid integer");
+		GetPointClicked(x,y);
+	}
 
 	if (ConvertedInt >= 0)
 		return ConvertedInt;
@@ -70,10 +77,10 @@ ActionType Input::GetUserAction() const
 	GetPointClicked(x, y); 
 
 	//  ============ GUI in the Design mode ============
-	if ( UI.InterfaceMode == MODE_DESIGN )	
+	if (UI.InterfaceMode == MODE_DESIGN)
 	{
 		// [1] If user clicks on the Toolbar
-		if ( y >= 0 && y < UI.ToolBarHeight)
+		if (y >= 0 && y < UI.ToolBarHeight)
 		{	
 			// Check which Menu item was clicked
 			// ==> This assumes that menu items are lined up horizontally <==
@@ -108,7 +115,7 @@ ActionType Input::GetUserAction() const
 		}
 
 		// [2] User clicks on the grid area
-		if ( (y >= UI.ToolBarHeight) && (y < UI.height - UI.StatusBarHeight))
+		if ((y >= UI.ToolBarHeight) && (y < UI.height - UI.StatusBarHeight))
 		{
 			return GRID_AREA;	
 		}
@@ -146,14 +153,14 @@ CellPosition Input::GetCellClicked() const
 
 	CellPosition cellPos;
 
-	if ( UI.InterfaceMode == MODE_DESIGN )	
+	if (UI.InterfaceMode == MODE_DESIGN)
 	{
-		if ( y >= UI.ToolBarHeight && y <= (UI.height - UI.StatusBarHeight))
+		if (y >= UI.ToolBarHeight && y <= (UI.height - UI.StatusBarHeight))
 		{
 			///TODO:(done) SetHCell and SetVCell of the object cellPost appropriately
 			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
-			cellPos.SetHCell(x / (UI.width / NumHorizontalCells));
-			cellPos.SetVCell((y - UI.ToolBarHeight) / ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+			cellPos.SetHCell(x / UI.CellWidth);
+			cellPos.SetVCell((y - UI.ToolBarHeight) / UI.CellHeight);
 		}
 		else {
 			cellPos.SetHCell(-1); 

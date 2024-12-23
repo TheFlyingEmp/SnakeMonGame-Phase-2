@@ -10,5 +10,9 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CopyCard on the passed Player
 	// by moving  the player to the next Ladder
 
+	virtual void Save(ofstream& OutFile);
+
+	virtual void Load(ifstream& InFile);
+
 	virtual ~CardThree(); // A Virtual Destructor
 };

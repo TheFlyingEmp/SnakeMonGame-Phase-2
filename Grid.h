@@ -65,14 +65,18 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
+	bool HasGameObject(const CellPosition& cellposition); // It checks if a given cellposition has an Object
+	GameObject* GetGameObjectfromCell(const CellPosition& cellpositon); //A getter for Game Object
+
+	Cell * GetCellFromPosition(const CellPosition& pos); // A getter for the cell with position pos
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
-	
+	void SetCurrentPlayer(int current_player);
 	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder* GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	Snake* GetNextSnake(const CellPosition& position);
+	Snake* GetNextSnake(const CellPosition& position);                                
 
 	// ========= User Interface Functions =========
 
@@ -85,5 +89,12 @@ public:
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
 
+	// ============== Save and Load Grid ===================
+	
+	void SaveGrid(ofstream& OutFile, string fileName);
+
+	void LoadGrid(ifstream& InFile, string filename);
+
 	~Grid(); // A destructor for any needed deallcations
 };
+

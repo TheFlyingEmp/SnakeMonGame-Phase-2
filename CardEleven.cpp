@@ -1,5 +1,7 @@
 #include "CardEleven.h"
 
+bool CardEleven::IsBought = false;
+
 CardEleven::CardEleven(const CellPosition& pos) : Card(pos) {
 	cardNumber = 11;
 }
@@ -22,15 +24,15 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	char answer;
 	int EF = 0, i = 0;
-	bool isbought = false;
 	bool PlayerHasCard = false;
 
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
+	Cell* CellPlayerisOn = pPlayer->GetCell();
 
 	Card::Apply(pGrid, pPlayer);
-  
-	if (isbought == false) {
+
+	if (IsBought == false) {
 		do {
 			if (EF > 0)
 				pGrid->PrintErrorMessage("Please an appropriate value...");
@@ -44,7 +46,7 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 
 		if (answer == 'y') {
 			pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
-			isbought = true;
+			IsBought = true;
 			i = 0;
 			do {
 				if (pPlayer->GetCardsOwned(i) == NULL) {
@@ -57,20 +59,33 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 		else return;
 	}
 
-	i = 0;
-	do {
-		if (pPlayer->GetCardsOwned(i) == Card_11) {
-			PlayerHasCard = true;
-			break;
-		}
-		i++;
-	} while (i < 4);
+	if (CellPlayerisOn->GetCellPosition() == position) {
 
-	if (PlayerHasCard != true) {
-      
-		pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
-		pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
-		pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
-      
+		i = 0;
+		do {
+			if (pPlayer->GetCardsOwned(i) == Card_11) {
+				PlayerHasCard = true;
+				break;
+			}
+			i++;
+		} while (i < 4);
+
+		if (PlayerHasCard != true) {
+
+			pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+			pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
+			pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
+
+		}
 	}
+}
+
+void CardEleven::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CardPrice << " " << FeestoPay << endl;
+}
+
+void CardEleven::Load(ifstream& InFile)
+{
+	InFile >> CardPrice >> FeestoPay;
 }

@@ -1,6 +1,7 @@
 #include "CardNine.h"
 
-CardNine::CardNine(const CellPosition& pos) : Card(pos) {
+CardNine::CardNine(const CellPosition& pos) : Card(pos)
+{
 	cardNumber = 9;
 }
 
@@ -21,4 +22,13 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("The player: " + to_string(pPlayer->GetPlayerNum()) + " will be moved to cell " + to_string(CelltoBeMovedTo));
 
 	pPlayer->Move(pGrid, CelltoBeMovedTo);
+}
+
+void CardNine::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << " " << CelltoBeMovedTo << endl;
+}
+
+void CardNine::Load(ifstream& InFile)
+{
 }

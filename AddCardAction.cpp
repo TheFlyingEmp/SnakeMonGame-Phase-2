@@ -24,6 +24,7 @@ AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 
 AddCardAction::~AddCardAction()
 {
+
 }
 
 void AddCardAction::ReadActionParameters() 
@@ -32,12 +33,15 @@ void AddCardAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 
+
+	pOut->PrintMessage("Please input card number......");
 	cardNumber = pIn->GetInteger(pOut);
 	if (!(cardNumber >= 1 && cardNumber <= 13)) {
 		pGrid->PrintErrorMessage("Invalid, please input a valid card number...");
 		return;
 	}
 
+	pOut->PrintMessage("Please Click on a Cell to input  card position.....");
 	cardPosition = pIn->GetCellClicked();
 	if (!(cardPosition.IsValidCell())) {
 		pGrid->PrintErrorMessage("Invalid, please click on a valid cell...");
@@ -71,7 +75,6 @@ void AddCardAction::Execute()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
-	
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
@@ -121,10 +124,10 @@ void AddCardAction::Execute()
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
 	if (pCard)
 	{
-		// A- We get a pointer to the Grid from the ApplicationManager
 		Grid* pGrid = pManager->GetGrid();
-		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
 		pCard->ReadCardParameters(pGrid);
+		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
+		bool added = pGrid->AddObjectToCell(pCard);
 		// C- Add the card object to the GameObject of its Cell:
 		bool isadded = pGrid->AddObjectToCell(pCard);
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
@@ -133,5 +136,84 @@ void AddCardAction::Execute()
 	}
 
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
+
+}
+
+void AddCardAction::ReadActionForEdit(const CellPosition& pos)
+{
+	cardPosition = pos;
+	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+
+	pOut->PrintMessage("Please input card number......");
+	cardNumber = pIn->GetInteger(pOut);
+	while (!(cardNumber >= 1 && cardNumber <= 13))
+	{
+		pGrid->PrintErrorMessage("Invalid Card Input. Please try again");
+		cardNumber = pIn->GetInteger(pOut);
+	}
+
+	Card* pCard = NULL; // will point to the card object type
+	switch (cardNumber)
+	{
+	case 1:
+		pCard = new CardOne(cardPosition);
+		break;
+	case 2:
+		pCard = new CardTwo(cardPosition);
+		break;
+	case 3:
+		pCard = new CardThree(cardPosition);
+		break;
+	case 4:
+		pCard = new CardFour(cardPosition);
+		break;
+	case 5:
+		pCard = new CardFive(cardPosition);
+		break;
+	case 6:
+		pCard = new CardSix(cardPosition);
+		break;
+	case 7:
+		pCard = new CardSeven(cardPosition);
+		break;
+	case 8:
+		pCard = new CardEight(cardPosition);
+		break;
+	case 9:
+		pCard = new CardNine(cardPosition);
+		break;
+	case 10:
+		pCard = new CardTen(cardPosition);
+		break;
+	case 11:
+		pCard = new CardEleven(cardPosition);
+		break;
+	case 12:
+		pCard = new CardTwelve(cardPosition);
+		break;
+	case 13:
+		pCard = new CardThirteen(cardPosition);
+		break;
+
+		// A- Add the remaining cases
+
+	}
+
+	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
+	if (pCard)
+	{
+		Grid* pGrid = pManager->GetGrid();
+		// A- We get a pointer to the Grid from the ApplicationManager
+		pCard->ReadCardParameters(pGrid);
+		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
+		bool added = pGrid->AddObjectToCell(pCard);
+		// C- Add the card object to the GameObject of its Cell:
+		if (!added)
+			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
+		
+	}
 
 }

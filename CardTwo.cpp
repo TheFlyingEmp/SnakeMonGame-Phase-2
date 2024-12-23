@@ -5,7 +5,7 @@ CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position o
 	cardNumber = 2; // set the inherited cardNumber data member with the card number (2 here)
 }
 
-CardTwo::~CardTwo(void)
+CardTwo::~CardTwo()
 {
 }
 void CardTwo::ReadCardParameters(Grid* pGrid)
@@ -34,6 +34,13 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
 	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
+}
 
+void CardTwo::Save(ofstream& OutFile)
+{
+	OutFile << cardNumber << " " << position.GetCellNum() << endl;
+}
 
+void CardTwo::Load(ifstream& InFile)
+{
 }

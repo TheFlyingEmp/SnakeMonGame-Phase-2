@@ -1,14 +1,14 @@
 #include "CellPosition.h"
 #include "UI_Info.h"
 
-CellPosition::CellPosition () 
+CellPosition::CellPosition()
 {
 	// (-1) indicating an invalid cell (uninitialized by the user)
 	vCell = -1; 
 	hCell = -1; 
 }
 
-CellPosition::CellPosition (int v, int h)
+CellPosition::CellPosition(int v, int h)
 { 
 	// (-1) indicating an invalid cell (uninitialized by the user)
 
@@ -16,7 +16,7 @@ CellPosition::CellPosition (int v, int h)
 	SetHCell(h);
 }
 
-CellPosition::CellPosition (int cellNum)
+CellPosition::CellPosition(int cellNum)
 {
 	(*this) = GetCellPositionFromNum(cellNum); // the function call with build a cell position (vCell and hCell)
 												// from the passed (cellNum)
@@ -80,7 +80,7 @@ int CellPosition::GetCellNum() const
 										  // which means the object of the current data members (vCell and hCell)
 }
 
-int CellPosition::GetCellNumFromPosition(const CellPosition & cellPosition)
+int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
 {
 	// Note:
 	// this is a static function (do NOT need a calling object so CANNOT use the data members of the calling object, vCell&hCell)
@@ -89,8 +89,9 @@ int CellPosition::GetCellNumFromPosition(const CellPosition & cellPosition)
 	///TODO:(done) Implement this function as described in the .h file
 
 	if (cellPosition.IsValidCell())
-		return 89 + cellPosition.HCell() - cellPosition.VCell() * NumHorizontalCells;
+		return (NumHorizontalCells * NumVerticalCells - NumHorizontalCells + 1) + cellPosition.HCell() - cellPosition.VCell() * NumHorizontalCells;
 	else return -1;
+
 
 	// this line should be changed with your implementation
 }
@@ -101,7 +102,7 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 
 	CellPosition position;
 	if (cellNum >= 1 && cellNum <= 99) {
-		position.SetHCell((cellNum - 1) % NumHorizontalCells);
+		position.SetHCell((cellNum -1) % NumHorizontalCells);
 		position.SetVCell((position.HCell() - cellNum + 89) / NumHorizontalCells);
 	}
 	else {
@@ -121,12 +122,13 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 	return position;
 }
 
-void CellPosition::AddCellNum (int addedNum)
+void CellPosition::AddCellNum(int addedNum)
 {
 	
 	/// TODO:(done) Implement this function as described in the .h file
-
-	GetCellPositionFromNum(GetCellNum() + addedNum);
+	CellPosition pos = GetCellPositionFromNum(GetCellNum() + addedNum);
+	vCell = pos.VCell();
+	hCell = pos.HCell();
 
 	// Note: this function updates the data members (vCell and hCell) of the calling object
 

@@ -130,7 +130,7 @@ void Output::DrawCardNumber(const CellPosition& cellPos, int cardNum) const
 
 	int w = 0, h = 0;
 
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 	pWind->GetIntegerSize(w, h, cardNum);
 
@@ -271,6 +271,7 @@ void Output::PrintPlayersInfo(string info)
 
 	ClearToolBar();
 
+	Output::CreatePlayModeToolBar();
 
 
 	// Set the pen and font before drawing the string on the window
@@ -285,8 +286,11 @@ void Output::PrintPlayersInfo(string info)
 	//       (Use GetStringSize() window function) and set the "w" and "h" variables with its width and height
 
 	// Set the start X & Y coordinate of drawing the string
+
 	int x = UI.width - w - 20; // space 20 before the right-side of the window
+
 	// ( - w ) because x is the coordinate of the start point of the string (upper left)
+
 	int y = (UI.ToolBarHeight - h) / 2; // in the Middle of the toolbar height
 
 	///TODO:(done) Draw the string "info" in the specified location (x, y)
@@ -314,7 +318,7 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 
 	///TODO:(done) Draw the Cell Rectangle using the appropriate coordinates
 
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + (UI.width / NumHorizontalCells), cellStartY + ((UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells));
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);
@@ -380,7 +384,8 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 		x += radius + 2 + radius; // because playerNum 1 and 3 are drawn in the second column of circles
 
 	///TODO:(done) Draw the player circle in center(x,y) and filled with the playerColor passed to the function
-
+	pWind->SetPen(playerColor); // Had to add this function because for some reason whiout it the players' color 
+								// changes with every addition in Design Mode (for ex: add a ladder makes all players' color change to that of the ladder)
 	pWind->SetBrush(playerColor);
 	pWind->DrawCircle(x, y, radius);
 }

@@ -11,6 +11,7 @@ void CopyCardAction::ReadActionParameters()
 
 void CopyCardAction::Execute()
 {
+	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
@@ -32,6 +33,7 @@ void CopyCardAction::Execute()
 		pGrid->PrintErrorMessage("Invalid, the clicked cell does not exist");
 		return;
 	}
+	pOut->ClearStatusBar();
 }
 
 CopyCardAction::~CopyCardAction()
