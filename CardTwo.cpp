@@ -33,6 +33,7 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
+
 	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);
 }
 

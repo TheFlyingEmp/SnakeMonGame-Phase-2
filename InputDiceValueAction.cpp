@@ -31,8 +31,6 @@ void InputDiceValue::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 
-	if (pGrid->GetEndGame())
-		pGrid->PrintErrorMessage("test.");
 	Player* pPlayer = pGrid->GetCurrentPlayer();
 	pPlayer->Move(pGrid, dicenumber);
 	pGrid->AdvanceCurrentPlayer();

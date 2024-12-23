@@ -51,6 +51,7 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply( pGrid, pPlayer);
+
 	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	

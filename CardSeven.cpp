@@ -14,6 +14,7 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 	srand((int)time(NULL));
 	int DiceRoll = 1 + rand() % 6;
 	pPlayer->Move(pGrid, DiceRoll);
+	pPlayer->SetTurncount(pPlayer->GetTurnCount() - 1);
 }
 
 void CardSeven::Save(ofstream& OutFile)

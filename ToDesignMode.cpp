@@ -20,7 +20,6 @@ void ToDesignMode::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	pOut->CreateDesignModeToolBar();
-	pGrid->SetEndGame(true); //This ends the current playing session.
 	pManager->ExecuteAction(NEW_GAME); //since the session has ended everything should be reset
 	pGrid->UpdateInterface();
 

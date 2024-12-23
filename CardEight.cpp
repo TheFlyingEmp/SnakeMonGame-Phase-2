@@ -15,7 +15,8 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-	pPlayer->SetExtraDiceRolls(-1);
+
+	pPlayer->SetExtraDiceRolls(-2);
 }
 
 void CardEight::Save(ofstream& OutFile)

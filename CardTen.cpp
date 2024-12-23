@@ -18,6 +18,8 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 	pOut->PrintMessage("Please, input the Fees to Pay when passing the Card...");
 
 	FeestoPay = pIn->GetInteger(pOut);
+
+	pOut->ClearStatusBar();
 }
 
 void CardTen::Apply(Grid* pGrid, Player* pPlayer)
@@ -70,7 +72,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 
 	if (PlayerHasCard != true) {
 
-		pGrid->PrintErrorMessage("The card is owned by player: " + to_string(pPlayer->GetPlayerNum()));
+		pGrid->PrintErrorMessage("Player " + to_string(pPlayer->GetPlayerNum()) + " stepped on an owned card");
 		pGrid->PrintErrorMessage(to_string(FeestoPay) + " will be deducted from your wallet");
 		pPlayer->SetWallet(pPlayer->GetWallet() - FeestoPay);
 	}

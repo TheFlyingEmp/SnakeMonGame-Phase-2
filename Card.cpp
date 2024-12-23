@@ -15,9 +15,16 @@ int Card::GetCardNumber()
 {
 	return cardNumber;
 }
-void Card::SetPosition(const CellPosition& pos)
+void Card::SetPosition(const CellPosition& pos, Grid* pGrid)
 {
-	position = pos;
+	try
+	{
+		position = pos;
+	}
+	catch (const exception& e) {
+		pGrid->PrintErrorMessage("Error of type: " + string(e.what()) + " was detected, please input a valid value");
+		return;
+	}
 }
 
 void Card::Draw(Output* pOut) const

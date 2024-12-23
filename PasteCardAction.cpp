@@ -19,7 +19,7 @@ void PasteCardAction::Execute()
 	CellPosition TargetCellPos = pIn->GetCellClicked();
 	if (TargetCellPos.IsValidCell()) {
 		Card* CardtoBePasted = pGrid->GetClipboard();
-		CardtoBePasted->SetPosition(TargetCellPos);
+		CardtoBePasted->SetPosition(TargetCellPos, pGrid);
 		pGrid->AddObjectToCell(CardtoBePasted);
 	}
 	else {

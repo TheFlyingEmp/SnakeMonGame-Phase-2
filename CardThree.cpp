@@ -14,12 +14,17 @@ void CardThree::ReadCardParameters(Grid* pGrid)
 }
 void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 {
+	Card::Apply(pGrid, pPlayer);
+
 	Ladder* pLadder = pGrid->GetNextLadder(position); // note: "position" here is the position of CARD and we are making a pointer that points to
 	//the position of LADDER
 	if (pLadder == nullptr)
 		return;
 	else
-		pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
+	{
+		pPlayer->Move(pGrid, CellPosition::GetCellNumFromPosition(pLadder->GetPosition()) - pPlayer->GetjustRolledDiceNum() - 1);
+		pPlayer->SetTurncount(pPlayer->GetTurnCount() - 1);
+	}
 }
 
 void CardThree::Save(ofstream& OutFile)

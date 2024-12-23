@@ -15,7 +15,8 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 	int DiceValue = pPlayer->GetjustRolledDiceNum();			// Get the dice value 
 	CellPosition PlayerNewCellNum = pPlayer->GetCell()->GetCellPosition(); // Get the cell position of the current cell
 	PlayerNewCellNum.AddCellNum(-1 * DiceValue); // Get the cell position of the previous cell
-	pGrid->UpdatePlayerCell(pPlayer, PlayerNewCellNum); // Move the player to the old cell
+	pPlayer->Move(pGrid, CellPosition::GetCellNumFromPosition(PlayerNewCellNum) - DiceValue - 1); // Move the player to the old cell
+	pPlayer->SetTurncount(pPlayer->GetTurnCount() - 1);
 }
 
 void CardSix::Save(ofstream& OutFile)

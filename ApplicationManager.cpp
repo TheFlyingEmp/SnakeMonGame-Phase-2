@@ -10,11 +10,12 @@
 #include "EditCardAction.h"
 #include "PasteCardAction.h"
 #include "DeleteGameObjectAction.h"
-
 #include "ToPlayMode.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
 #include "NewGameAction.h"
+#include "SaveGridAction.h"
+#include "LoadGridAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -82,9 +83,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case COPY_CARD:
 		pAct = new CopyCardAction(this);
 		break;
+
 	case CUT_CARD:
 		pAct = new CutCardAction(this);
 		break;
+
 	case PASTE_CARD:
 		pAct = new PasteCardAction(this);
 		break;
@@ -92,8 +95,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EDIT_CARD:
 		pAct = new EditCardAction(this);
 		break;
+
 	case DELETE_GAME_OBJECT:
 		pAct = new DeleteGameObjectAction(this);
+		break;
+
+	case SAVE_GRID:
+		pAct = new SaveGridAction(this);
+		break;
+
+	case OPEN_GRID:
+		pAct = new LoadGridAction(this);
 		break;
 
 	case EXIT:

@@ -19,6 +19,7 @@ void ToPlayMode::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
+	pGrid->SetEndGame(false);
 	pOut->CreatePlayModeToolBar();
 	pGrid->UpdateInterface();
 

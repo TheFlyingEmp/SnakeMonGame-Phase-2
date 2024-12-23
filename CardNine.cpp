@@ -10,7 +10,7 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 
-	pGrid->PrintErrorMessage("Please, input the number of cells you want the player to be moved...");
+	pOut->PrintMessage("Please, input the number of cells you want the player to be moved...");
 
 	CelltoBeMovedTo = pIn->GetInteger(pOut);
 }
@@ -31,4 +31,5 @@ void CardNine::Save(ofstream& OutFile)
 
 void CardNine::Load(ifstream& InFile)
 {
+	InFile >> CelltoBeMovedTo;
 }

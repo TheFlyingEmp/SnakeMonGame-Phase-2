@@ -28,6 +28,17 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+
+void Snake::Save(ofstream& OutFile)
+{
+	OutFile << EndCellPos.GetCellNum() << " " << position.GetCellNum() << endl; // prints the start and end positions in the file
+}
+
+void Snake::Load(ifstream& InFile)
+{
+	return;
+}
+
 CellPosition Snake::GetEndPosition() const
 {
 	return EndCellPos;
