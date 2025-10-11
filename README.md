@@ -14,7 +14,7 @@ Key components:
   3. Logic for handling snake and ladder interactions, alongside turn-based progression.
   4. Real-time visualization of the board, player tokens, and game status.
 - **Development Environment**: Structured as a Visual Studio solution, compiling to a Windows executable. The codebase employs object-oriented principles with distinct classes for board management, player state, and game control.
-- **Context**: Developed as a course project in the first semester of the first year of the Computer Engineering Department in Cairo University Faculty of Engineering, demonstrating proficiency in C++ programming, graphical interfaces, and game logic implementation.
+- **Context**: Developed as a course project in the first semester of the first year of Computer Engineering Department in Cairo University - Faculty of Engineering, demonstrating proficiency in C++ programming, graphical interfaces, and game logic implementation.
 - 
 
 ## Building and Running
